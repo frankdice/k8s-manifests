@@ -4,13 +4,16 @@ kind: Deployment
 metadata:
   name: jellyfin
 spec:
+  selector:
+    matchLabels:
+      app: jellyfin
   template:
     metadata:
       labels:
         app: jellyfin
     spec:
       containers:
-        image: docker.io/jellyfin/jellyfin:20221123.13-unstable
+      - image: docker.io/jellyfin/jellyfin:20221123.13-unstable
         imagePullPolicy: IfNotPresent
         name: jellyfin
         ports:
