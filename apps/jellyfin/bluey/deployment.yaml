@@ -16,6 +16,13 @@ spec:
       - image: docker.io/jellyfin/jellyfin:20221123.13-unstable
         imagePullPolicy: IfNotPresent
         name: jellyfin
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
         ports:
         - containerPort: 8096
           protocol: TCP
