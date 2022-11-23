@@ -1,0 +1,5 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: flux-system
+resources:
+  - fluxcd.yaml # Pulled from the latest binary installer via `flux install --export > fluxcd.yaml`
