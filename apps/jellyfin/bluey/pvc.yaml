@@ -17,6 +17,7 @@ metadata:
 spec:
   accessModes:
     - ReadOnlyMany
+  storageClassName: nfs-ro
   resources:
     requests:
       storage: 10Gi

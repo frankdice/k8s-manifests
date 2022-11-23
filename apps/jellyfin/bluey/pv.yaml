@@ -30,6 +30,7 @@ spec:
     storage: 1Mi
   accessModes:
     - ReadOnlyMany
+  storageClassName: nfs-ro
   nfs:
     server: bob.babyvelociraptor.com
     path: "/Media"
