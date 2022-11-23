@@ -22,3 +22,5 @@ spec:
         namespace: flux-system
   values:
     installCRDs: true
+  install:
+    createNamespace: true
