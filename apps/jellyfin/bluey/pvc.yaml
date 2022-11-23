@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: local-storage
+  storageClassName: local-path
   resources:
     requests:
       storage: 10Gi
@@ -17,7 +17,7 @@ metadata:
 spec:
   accessModes:
     - ReadOnlyMany
-  storageClassName: local-storage
+  storageClassName: nfs
   resources:
     requests:
       storage: 10Gi
