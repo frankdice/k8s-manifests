@@ -1,0 +1,18 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: github
+  namespace: flux-system
+spec:
+  providerRef: 
+    name: discord
+  summary: "Bluey"
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: Kustomization
+      name: '*'
+  exclusionList:
+    # Kustomization controller - Dependent services don't meet ready condition - transient error
+    - "Dependencies do not meet ready condition, retrying in 30s"
