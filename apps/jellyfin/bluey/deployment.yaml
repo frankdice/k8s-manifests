@@ -28,8 +28,11 @@ spec:
       restartPolicy: Always
       volumes:
       - name: media
-        persistentVolumeClaim:
-          claimName: media
+        nfs:
+          server: 192.168.1.35
+          path: /Media
+        # persistentVolumeClaim:
+        #   claimName: media
       - name: jellyfin-config
         persistentVolumeClaim:
           claimName: jellyfin-config

@@ -9,15 +9,15 @@ spec:
   resources:
     requests:
       storage: 10Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: media
-spec:
-  accessModes:
-    - ReadOnlyMany
-  storageClassName: nfs-ro
-  resources:
-    requests:
-      storage: 10Gi
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: media
+# spec:
+#   accessModes:
+#     - ReadOnlyMany
+#   storageClassName: nfs-ro
+#   resources:
+#     requests:
+#       storage: 10Gi
