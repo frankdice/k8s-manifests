@@ -29,7 +29,7 @@ spec:
   capacity:
     storage: 1Mi
   accessModes:
-    - ReadWriteMany
+    - ReadOnlyMany
   nfs:
     server: bob.babyvelociraptor.com
     path: "/Media"

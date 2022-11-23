@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+        image: docker.io/jellyfin/jellyfin:20221123.13-unstable
+        imagePullPolicy: IfNotPresent
+        name: jellyfin
+        ports:
+        - containerPort: 8096
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /data/media
+          name: media
+          readOnly: True
+        - mountPath: /config
+          name: jellyfin-config
+      restartPolicy: Always
+      volumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: media
+      - name: jellyfin-config
+        persistentVolumeClaim:
+          claimName: jellyfin-config
