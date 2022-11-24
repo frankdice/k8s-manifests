@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: node-exporter
+  labels:
+    app.kubernetes.io/name: prometheus-node-exporter
+  namespace: flux-system
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-node-exporter
+  endpoints:
+    - port: metrics
+      path: /metrics
+      honorLabels: true
+      scheme: http
