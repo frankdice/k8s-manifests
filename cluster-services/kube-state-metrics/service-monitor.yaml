@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-state-metrics
+  labels:
+    app.kubernetes.io/name: kube-state-metrics
+  namespace: kube-system
+spec:
+  endpoints:
+    - port: metrics
+      path: /metrics
+      targetPort: 8080
+      honorLabels: true
+      scheme: http

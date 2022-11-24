@@ -7,3 +7,4 @@ resources:
   - cluster-role-binding.yaml
   - deployment.yaml # 1.25 k8s version
   - service.yaml
+  - service-monitor.yaml
