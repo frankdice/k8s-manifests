@@ -14,9 +14,7 @@ spec:
   storage:
     volumeClaimTemplate:
       spec:
-        selector:
-          matchLabels:
-            app.kubernetes.io/name: prometheus
+        volumeName: prometheus
         resources:
           requests:
             storage: 50Gi
