@@ -4,6 +4,6 @@ namespace: kube-system
 resources:
   - service-account.yaml
   - cluster-role.yaml
-  - cluster-role-bunding.yaml
+  - cluster-role-binding.yaml
   - deployment.yaml # 1.25 k8s version
   - service.yaml
