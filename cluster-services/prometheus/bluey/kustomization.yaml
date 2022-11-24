@@ -7,3 +7,4 @@ resources:
   - pv.yaml
   - prometheus.yaml
   - ingress-prometheus.yaml
+  - kubelet-service-monitor.yaml
