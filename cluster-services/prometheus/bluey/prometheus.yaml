@@ -3,6 +3,7 @@ kind: Prometheus
 metadata:
   name: prometheus
 spec:
+  replicas: 1
   serviceAccountName: prometheus
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
@@ -10,3 +11,12 @@ spec:
   resources:
     requests:
       memory: 400Mi
+  storage:
+    volumeClaimTemplate:
+      spec:
+        selector:
+          matchLabels:
+            app.kubernetes.io/name: prometheus
+        resources:
+          requests:
+            storage: 50Gi
