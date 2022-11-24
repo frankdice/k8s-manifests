@@ -8,4 +8,4 @@ resources:
   - service.yaml
   - deployment.yaml
   - ingress.yaml
-  - pod-monitor.yaml
+  # - pod-monitor.yaml

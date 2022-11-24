@@ -9,3 +9,4 @@ spec:
   namespaceSelector:
     matchNames:
       - jellyfin
+    # Missing a metrics path...
