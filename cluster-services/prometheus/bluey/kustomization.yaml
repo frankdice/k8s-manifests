@@ -5,4 +5,4 @@ resources:
   - namespace.yaml
   - rbac.yaml
   - prometheus.yaml
-  - ingress.yaml
+  - ingress-prometheus.yaml
