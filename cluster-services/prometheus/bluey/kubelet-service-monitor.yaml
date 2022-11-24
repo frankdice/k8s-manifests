@@ -9,7 +9,7 @@ spec:
   endpoints:
   - port: https-metrics
     scheme: https
-      path: /metrics
+    path: /metrics
     interval: 30s
     tlsConfig:
       insecureSkipVerify: true
