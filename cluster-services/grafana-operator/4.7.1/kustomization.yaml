@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: grafana-operator-system
+namePrefix: grafana-operator-
+
+patchesStrategicMerge:
+  - security-context.yaml
+
+resources:
+  - crds.yaml # Pulled from https://github.com/grafana-operator/grafana-operator/tree/v4.7.1/deploy/manifests
+  - deployment.yaml
+  - rbac.yaml
+  - namespace.yaml
