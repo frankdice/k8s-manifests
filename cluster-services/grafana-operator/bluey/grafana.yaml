@@ -9,6 +9,7 @@ spec:
     pathType: Prefix
     path: "/"
     hostname: grafana.babyvelociaptor.com
+    class: traefik
   dataStorage:
     accessModes:
     - ReadWriteOnce
