@@ -1,0 +1,27 @@
+apiVersion: integreatly.org/v1alpha1
+kind: Grafana
+metadata:
+  name: grafana
+spec:
+  ingress:
+    enabled: True
+    pathType: Prefix
+    path: "/"
+    hostname: grafana.babyvelociaptor.com
+  dataStorage:
+    accessModes:
+    - ReadWriteOnce
+    size: 10Gi
+    volumeName: "grafana"
+  config:
+    log:
+      mode: "console"
+      level: "warn"
+    auth:
+      disable_login_form: False
+      disable_signout_menu: True
+    auth.anonymous:
+      enabled: True
+  dashboardLabelSelector:
+    - matchExpressions:
+        - {key: app, operator: In, values: [grafana]}
