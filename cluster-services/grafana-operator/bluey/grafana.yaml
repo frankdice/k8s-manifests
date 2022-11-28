@@ -8,7 +8,7 @@ spec:
     enabled: True
     pathType: Prefix
     path: "/"
-    hostname: grafana.babyvelociaptor.com
+    hostname: grafana.babyvelociraptor.com
     ingressClassName: traefik
   dataStorage:
     accessModes:
