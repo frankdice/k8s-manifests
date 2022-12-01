@@ -36,15 +36,9 @@ patchesStrategicMerge:
           containers:
             - name: external-dns
               env:
-                - name: CF_API_KEY
+                - name: CF_API_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: cloudflare-api-key
-                      key: CF_API_KEY
-                      optional: false
-                - name: CF_API_EMAIL
-                  valueFrom:
-                    secretKeyRef:
-                      name: cloudflare-api-key
-                      key: CF_API_EMAIL
+                      key: CF_API_TOKEN
                       optional: false
