@@ -1,0 +1,17 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: podcasts
+  namespace: podcasts
+spec:
+  rules:
+    - host: podcasts.babyvelociraptor.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: podcasts
+                port:
+                  name: web

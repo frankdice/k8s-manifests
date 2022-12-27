@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  selector:
+    matchLabels:
+      app: podcasts
+  template:
+    metadata:
+      labels:
+        app: podcasts
+    spec:
+      containers:
+      - image: docker.io/babyraptor/dir2cast:69adefa
+        imagePullPolicy: IfNotPresent
+        name: jellyfin
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/www/html/media
+          name: media
+          readOnly: True
+      restartPolicy: Always
+      volumes:
+      - name: media
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Audiobooks
