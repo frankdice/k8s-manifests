@@ -13,7 +13,7 @@ spec:
         app: hadrians-wall
     spec:
       containers:
-      - image: docker.io/babyraptor/hw-solo:efd2b0b
+      - image: docker.io/babyraptor/hw-solo:466514b
         imagePullPolicy: IfNotPresent
         name: hadrians-wall
         resources:
