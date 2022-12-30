@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hadrians-wall
+spec:
+  selector:
+    matchLabels:
+      app: hadrians-wall
+  template:
+    metadata:
+      labels:
+        app: hadrians-wall
+    spec:
+      containers:
+      - image: docker.io/babyraptor/hw-solo:efd2b0b
+        imagePullPolicy: IfNotPresent
+        name: hadrians-wall
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
+

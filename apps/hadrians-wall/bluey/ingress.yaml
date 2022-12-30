@@ -1,0 +1,17 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: podcasts
+  namespace: podcasts
+spec:
+  rules:
+    - host: hadrians-wall.babyvelociraptor.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hadrians-wall
+                port:
+                  name: web
