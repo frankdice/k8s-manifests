@@ -4,6 +4,7 @@ metadata:
   name: hadrians-wall
   namespace: hadrians-wall
 spec:
+  ingressClassName: nginx
   rules:
     - host: hadrians-wall.babyvelociraptor.com
       http:
