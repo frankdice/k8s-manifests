@@ -4,6 +4,7 @@ metadata:
   name: grafana
   namespace: grafana
 spec:
+  ingressClassName: nginx
   rules:
     - host: grafana.babyvelociraptor.com
       http:

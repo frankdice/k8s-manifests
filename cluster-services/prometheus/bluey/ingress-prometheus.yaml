@@ -4,6 +4,7 @@ metadata:
   name: prometheus
   namespace: prometheus
 spec:
+  ingressClassName: nginx
   rules:
     - host: prometheus.babyvelociraptor.com
       http:

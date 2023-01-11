@@ -4,6 +4,7 @@ metadata:
   name: jellyfin
   namespace: jellyfin
 spec:
+  ingressClassName: nginx
   rules:
     - host: jellyfin.babyvelociraptor.com
       http:

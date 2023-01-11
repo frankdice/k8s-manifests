@@ -4,6 +4,7 @@ metadata:
   name: podcasts
   namespace: podcasts
 spec:
+  ingressClassName: nginx
   rules:
     - host: podcasts.babyvelociraptor.com
       http:
