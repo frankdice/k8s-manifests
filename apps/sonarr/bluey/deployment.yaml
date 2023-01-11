@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: radarr
+  name: sonarr
 spec:
   selector:
     matchLabels:
-      app: radarr
+      app: sonarr
   template:
     metadata:
       labels:
-        app: radarr
+        app: sonarr
     spec:
       containers:
       - image: linuxserver/sonarr:3.0.9
         imagePullPolicy: IfNotPresent
-        name: radarr
+        name: sonarr
         resources:
           requests:
             memory: "512M"
