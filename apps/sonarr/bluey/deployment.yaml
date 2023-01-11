@@ -13,7 +13,7 @@ spec:
         app: radarr
     spec:
       containers:
-      - image: linuxserver/sabnzbd:amd64-3.7.1
+      - image: linuxserver/sonarr:3.0.9
         imagePullPolicy: IfNotPresent
         name: radarr
         resources:
