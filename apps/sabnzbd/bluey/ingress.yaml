@@ -1,0 +1,18 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: sabnzbd
+  namespace: sabnzbd
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: sabnzbd.babyvelociraptor.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sabnzbd
+                port:
+                  name: web
