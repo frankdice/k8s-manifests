@@ -29,7 +29,6 @@ spec:
         volumeMounts:
         - mountPath: /downloads
           name: downloads
-          readOnly: True
         - mountPath: /config
           name: sabnzbd-config
       restartPolicy: Always
