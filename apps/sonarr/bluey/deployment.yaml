@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+spec:
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      containers:
+      - image: linuxserver/sabnzbd:amd64-3.7.1
+        imagePullPolicy: IfNotPresent
+        name: radarr
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 8989
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /downloads
+          name: downloads
+        - mountPath: /tv
+          name: tv
+        - mountPath: /config
+          name: sonarr-config
+      restartPolicy: Always
+      volumes:
+      - name: downloads
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Downloads-Bluey
+      - name: tv
+        nfs:
+          server: 192.168.1.35
+          path: /Media/TV
+      - name: sonarr-config
+        persistentVolumeClaim:
+          claimName: sonarr-config

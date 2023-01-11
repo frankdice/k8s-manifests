@@ -1,0 +1,18 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: sonarr
+  namespace: sonarr
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: sonarr.babyvelociraptor.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sonarr
+                port:
+                  name: web
