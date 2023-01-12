@@ -8,5 +8,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./cluster-services/ingress-nginx-external/bluey-internal
+  path: ./cluster-services/ingress-nginx/bluey-external
   prune: true
