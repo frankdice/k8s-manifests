@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duckdns
+spec:
+  selector:
+    matchLabels:
+      app: duckdns
+  template:
+    metadata:
+      labels:
+        app: duckdns
+    spec:
+      env:
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: duckdns-token
+              key: TOKEN
+              optional: false
+        - name: SUBDOMAINS
+          valueFrom:
+            secretKeyRef:
+              name: duckdns-token
+              key: SUBDOMAINS
+              optional: false
+      containers:
+      - image: linuxserver/duckdns:version-13f609b7
+        imagePullPolicy: IfNotPresent
+        name: duckdns
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+      restartPolicy: Always
