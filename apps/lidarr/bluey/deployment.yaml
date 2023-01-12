@@ -13,7 +13,7 @@ spec:
         app: lidarr
     spec:
       containers:
-      - image: linuxserver/sonarr:3.0.9
+      - image: linuxserver/lidarr:1.0.2
         imagePullPolicy: IfNotPresent
         name: lidarr
         resources:
@@ -39,7 +39,7 @@ spec:
         nfs:
           server: 192.168.1.35
           path: /Media/Downloads-Bluey
-      - name: tv
+      - name: music
         nfs:
           server: 192.168.1.35
           path: /Media/Music
