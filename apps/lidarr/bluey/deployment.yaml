@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lidarr
+spec:
+  selector:
+    matchLabels:
+      app: lidarr
+  template:
+    metadata:
+      labels:
+        app: lidarr
+    spec:
+      containers:
+      - image: linuxserver/sonarr:3.0.9
+        imagePullPolicy: IfNotPresent
+        name: lidarr
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 8686
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /downloads
+          name: downloads
+        - mountPath: /music
+          name: music
+        - mountPath: /config
+          name: lidarr-config
+      restartPolicy: Always
+      volumes:
+      - name: downloads
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Downloads-Bluey
+      - name: tv
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Music
+      - name: lidarr-config
+        persistentVolumeClaim:
+          claimName: lidarr-config
