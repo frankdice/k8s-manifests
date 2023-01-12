@@ -1,0 +1,13 @@
+[
+    {"op": "replace",
+     "path": "/spec/type",
+     "value": "LoadBalancer"},
+  
+    {"op": "replace",
+     "path": "/spec/ports/0/port",
+     "value": 8080},
+
+     {"op": "replace",
+     "path": "/spec/ports/1/port",
+     "value": 8443}
+]   
