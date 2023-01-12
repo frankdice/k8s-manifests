@@ -12,19 +12,6 @@ spec:
       labels:
         app: duckdns
     spec:
-      env:
-        - name: TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: duckdns-token
-              key: TOKEN
-              optional: false
-        - name: SUBDOMAINS
-          valueFrom:
-            secretKeyRef:
-              name: duckdns-token
-              key: SUBDOMAINS
-              optional: false
       containers:
       - image: linuxserver/duckdns:version-13f609b7
         imagePullPolicy: IfNotPresent
@@ -36,4 +23,17 @@ spec:
           limits:
             memory: "2G"
             cpu: "2"
+        env:
+          - name: TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: duckdns-token
+                key: TOKEN
+                optional: false
+          - name: SUBDOMAINS
+            valueFrom:
+              secretKeyRef:
+                name: duckdns-token
+                key: SUBDOMAINS
+                optional: false
       restartPolicy: Always
