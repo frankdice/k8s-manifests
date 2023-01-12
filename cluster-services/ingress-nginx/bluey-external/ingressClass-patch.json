@@ -1,0 +1,9 @@
+[
+    {"op": "replace",
+    "path": "/metadata/name",
+    "value": "nginx-external"},
+ 
+    {"op": "replace",
+     "path": "/spec/controller",
+     "value": "k8s.io/ingress-nginx-external"}
+]   
