@@ -4,3 +4,4 @@ namespace: duckdns
 resources:
   - namespace.yaml
   - deployment.yaml
+  - secret-duckdns.yaml
