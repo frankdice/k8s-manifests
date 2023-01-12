@@ -3,14 +3,19 @@ kind: Kustomization
 namespace: ingress-nginx-external
 resources:
   - ../base-1.5.1
-patchesStrategicMerge:
-  - ingressClass.yaml
+
 patches:
   - path: service-patch.json
     target:
       version: v1
       kind: Service
       name: ingress-nginx-controller
+  - path: ingressClass-patch.json
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: IngressClass
+      name: nginx
 
 # patchesStrategicMerge:
 #   - service.yaml
