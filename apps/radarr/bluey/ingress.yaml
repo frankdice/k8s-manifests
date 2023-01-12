@@ -3,7 +3,7 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: radarr
   namespace: radarr
-annotations:
+  annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 8m
 spec:
   ingressClassName: nginx
