@@ -23,6 +23,9 @@ patchesJson6902:
       - op: add
         path: /spec/template/spec/containers/0/args/-
         value: --txt-owner-id=bluey
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --annotation-filter=ingress.class=nginx
 
 patchesStrategicMerge:
  - |-
