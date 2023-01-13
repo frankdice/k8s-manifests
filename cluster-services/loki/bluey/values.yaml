@@ -9,3 +9,7 @@ spec:
       enabled: true
       hosts:
         - loki.babyvelociraptor.com
+    write:
+      replicas: 1
+    read:
+      replicas: 1
