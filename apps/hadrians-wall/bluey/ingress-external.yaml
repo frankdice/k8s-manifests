@@ -1,0 +1,20 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: hadrians-wall
+  namespace: hadrians-wall
+  annotations:
+    external: true
+spec:
+  ingressClassName: nginx-external
+  rules:
+    - host: hadrians-wall.e.babyvelociraptor.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hadrians-wall
+                port:
+                  name: web
