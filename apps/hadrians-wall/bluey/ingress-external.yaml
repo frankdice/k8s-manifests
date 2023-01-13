@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx-external
   rules:
-    - host: hadrians-wall.e.babyvelociraptor.com
+    - host: hadrians-wall-e.babyvelociraptor.com
       http:
         paths:
           - path: /
