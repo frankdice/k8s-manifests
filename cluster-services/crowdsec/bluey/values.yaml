@@ -5,6 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   values:
+    container_runtime: nginx
     agent:
       # To specify each pod you want to process it logs (pods present in the node)
       acquisition:
