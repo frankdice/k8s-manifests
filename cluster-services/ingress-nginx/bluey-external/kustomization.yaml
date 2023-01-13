@@ -22,9 +22,41 @@ patches:
       version: v1
       kind: Deployment
       name: ingress-nginx-controller
-  # - path: admission-patch.json
-  #   target:
-  #     group: admissionregistration.k8s.io
-  #     version: v1
-  #     kind: ValidatingWebhookConfiguration
-  #     name: ingress-nginx-admission
+
+patchesJSON6902:
+- target:
+    group: rbac.authorization.k8s.io
+    version: v1
+    kind: ClusterRole
+    name: ingress-nginx
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ingress-nginx-external
+- target:
+    group: rbac.authorization.k8s.io
+    version: v1
+    kind: ClusterRole
+    name: ingress-nginx-admission
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ingress-nginx-admission-external
+- target:
+    group: rbac.authorization.k8s.io
+    version: v1
+    kind: ClusterRoleBinding
+    name: ingress-nginx
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ingress-nginx-external
+- target:
+    group: rbac.authorization.k8s.io
+    version: v1
+    kind: ClusterRoleBinding
+    name: ingress-nginx-admission
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ingress-nginx-admission-external
