@@ -16,6 +16,15 @@ patches:
       version: v1
       kind: IngressClass
       name: nginx
-
-# patchesStrategicMerge:
-#   - service.yaml
+  - path: deployment-patch.json
+    target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: ingress-nginx-controller
+  # - path: admission-patch.json
+  #   target:
+  #     group: admissionregistration.k8s.io
+  #     version: v1
+  #     kind: ValidatingWebhookConfiguration
+  #     name: ingress-nginx-admission
