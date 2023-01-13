@@ -13,7 +13,7 @@ metadata:
   name: crowdsec
   namespace: flux-system
 spec:
-  targetNamespace: datadog
+  targetNamespace: crowdsec
   interval: 5m
   chart:
     spec:
