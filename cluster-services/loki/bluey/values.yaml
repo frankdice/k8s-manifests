@@ -13,5 +13,6 @@ spec:
         - loki.babyvelociraptor.com
     write:
       replicas: 2
+      affinity: ""
     read:
       replicas: 1
