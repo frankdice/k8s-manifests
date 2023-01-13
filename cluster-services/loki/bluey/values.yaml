@@ -12,6 +12,6 @@ spec:
       hosts:
         - loki.babyvelociraptor.com
     write:
-      replicas: 1
+      replicas: 2
     read:
       replicas: 1
