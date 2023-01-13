@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: cloudflare
+spec:
+  acme:
+    email: frank.dice@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - selector:
+        dnsZones:
+        - "babyvelociraptor.com"
+      dns01:
+        cloudflare:
+          email: frank.dice@gmail.com
+          apiTokenSecretRef:
+            name: cloudflare-api-key-babyvelociraptor
+            key: CF_API_TOKEN

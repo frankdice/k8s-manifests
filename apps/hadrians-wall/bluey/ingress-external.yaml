@@ -7,6 +7,10 @@ metadata:
     external: true
 spec:
   ingressClassName: nginx-external
+  tls:
+  - hosts:
+    - hadrians-wall-e.babyvelociraptor.com
+    secretName: hadrians-wall-e-tls
   rules:
     - host: hadrians-wall-e.babyvelociraptor.com
       http:
