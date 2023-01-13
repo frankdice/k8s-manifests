@@ -4,7 +4,7 @@ metadata:
   name: hadrians-wall-external
   namespace: hadrians-wall
   annotations:
-    external: true
+    cert-manager.io/cluster-issuer: cloudflare
 spec:
   ingressClassName: nginx-external
   tls:
