@@ -16,5 +16,5 @@ spec:
         cloudflare:
           email: frank.dice@gmail.com
           apiTokenSecretRef:
-            name: cloudflare-api-key-babyvelociraptor
+            name: cloudflare-api-key
             key: CF_API_TOKEN
