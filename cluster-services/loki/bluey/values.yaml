@@ -1,18 +1,5 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: loki
+  name: loki-stack
   namespace: flux-system
-spec:
-  values:
-    ingress:
-      enabled: true
-      annotations: 
-        kubernetes.io/ingress.class: "nginx"
-      hosts:
-        - loki.babyvelociraptor.com
-    write:
-      replicas: 2
-      affinity: ""
-    read:
-      replicas: 1
