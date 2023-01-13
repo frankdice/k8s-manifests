@@ -3,5 +3,16 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - cert-manager.yaml # Current as of 2022/03/13
-patchesStrategicMerge:
-  - leader-election-namespace.yaml # Overriding from `kube-system`
+patches:
+  - path: deployment-cm-patch.json
+    target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cert-manager
+  - path: deployment-cm-ca-patch.json
+    target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: cert-manager-cainjector
