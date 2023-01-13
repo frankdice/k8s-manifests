@@ -1,0 +1,28 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: kavita
+  namespace: kavita
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: kavita.babyvelociraptor.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kavita
+                port:
+                  name: web
+    - host: comics.babyvelociraptor.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kavita
+                port:
+                  name: web
