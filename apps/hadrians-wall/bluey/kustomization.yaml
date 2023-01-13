@@ -7,3 +7,4 @@ resources:
   - deployment.yaml
   - ingress.yaml
   - ingress-external.yaml
+  - external-auth.yaml

@@ -36,3 +36,7 @@ stringData:
 
 Then everything else
 
+
+## External Access
+
+External access means adding a few annotations and manually creating the CNAME in Cloudflare to DuckDNS. Document this better.
