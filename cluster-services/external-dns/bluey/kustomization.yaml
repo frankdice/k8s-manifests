@@ -25,7 +25,7 @@ patchesJson6902:
         value: --txt-owner-id=bluey
       - op: add
         path: /spec/template/spec/containers/0/args/-
-        value: --annotation-filter=external not in (true)
+        value: --annotation-filter=external notin (true)
 
 patchesStrategicMerge:
  - |-
