@@ -9,7 +9,7 @@ spec:
     pathType: Prefix
     path: "/"
     hostname: grafana.babyvelociraptor.com
-    ingressClassName: traefik
+    ingressClassName: nginx
   dataStorage:
     accessModes:
     - ReadWriteOnce
