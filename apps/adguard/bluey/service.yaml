@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
   - name: web
-    port: 3000
+    port: 80
     protocol: TCP
-    targetPort: 3000
+    targetPort: 80
   selector:
     app: adguard
   type: ClusterIP

@@ -28,7 +28,7 @@ spec:
           protocol: TCP
         - containerPort: 53
           protocol: UDP
-        - containerPort: 3000
+        - containerPort: 80
           protocol: TCP
         volumeMounts:
         - mountPath: /opt/adguardhome/work
