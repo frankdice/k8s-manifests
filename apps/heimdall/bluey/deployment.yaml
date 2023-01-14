@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall
+spec:
+  selector:
+    matchLabels:
+      app: heimdall
+  template:
+    metadata:
+      labels:
+        app: heimdall
+    spec:
+      containers:
+      - image: linuxserver/heimdall:2.5.5
+        imagePullPolicy: IfNotPresent
+        name: heimdall
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /config
+          name: heimdall-config
+      restartPolicy: Always
+      volumes:
+      - name: heimdall-config
+        persistentVolumeClaim:
+          claimName: heimdall-config
