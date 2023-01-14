@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uptime-kuma
+spec:
+  selector:
+    matchLabels:
+      app: uptime-kuma
+  template:
+    metadata:
+      labels:
+        app: uptime-kuma
+    spec:
+      containers:
+      - image: louislam/uptime-kuma:1.19.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: uptime-kuma
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 3001
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /config
+          name: uptime-kuma-config
+      restartPolicy: Always
+      volumes:
+      - name: uptime-kuma-config
+        persistentVolumeClaim:
+          claimName: uptime-kuma-config
