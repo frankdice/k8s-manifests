@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cyberchef
+spec:
+  selector:
+    matchLabels:
+      app: cyberchef
+  template:
+    metadata:
+      labels:
+        app:cyberchef
+    spec:
+      containers:
+      - image: mpepping/cyberchef:v9.55.0
+        imagePullPolicy: IfNotPresent
+        name: cyberchef
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+      restartPolicy: Always
+
