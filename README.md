@@ -40,3 +40,10 @@ Then everything else
 ## External Access
 
 External access means adding a few annotations and manually creating the CNAME in Cloudflare to DuckDNS. Document this better.
+
+
+
+## OS Updates
+
+Disable systemd-resolved and use a normal resolver setup (Adguard - binding to 53 messes this up)
+https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped it completely out)

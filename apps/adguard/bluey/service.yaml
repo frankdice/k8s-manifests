@@ -22,6 +22,7 @@ metadata:
     app: adguard
   name: adguard-dns
 spec:
+  externalTrafficPolicy: Local
   ports:
   - name: dns-tcp
     port: 53
