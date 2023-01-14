@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app:cyberchef
+        app: cyberchef
     spec:
       containers:
       - image: mpepping/cyberchef:v9.55.0
