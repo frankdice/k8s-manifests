@@ -4,6 +4,9 @@ namespace: ingress-nginx-external
 resources:
   - ../base-1.5.1
 
+patchesStrategicMerge:
+  - configmap.yaml
+
 patches:
   - path: service-patch.json
     target:
