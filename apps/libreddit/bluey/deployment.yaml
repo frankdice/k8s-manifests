@@ -16,6 +16,11 @@ spec:
       - image: libreddit/libreddit:latest
         imagePullPolicy: IfNotPresent
         name: libreddit
+        env:
+        - name: LIBREDDIT_DEFAULT_WIDE 
+          value: on
+        - name: LIBREDDIT_DEFAULT_SHOW_NSFW
+          value: on
         resources:
           requests:
             memory: "512M"
