@@ -47,3 +47,11 @@ External access means adding a few annotations and manually creating the CNAME i
 
 Disable systemd-resolved and use a normal resolver setup (Adguard - binding to 53 messes this up)
 https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped it completely out)
+
+
+## Look Into Later
+- readarr
+- openbooks
+- Firefly III
+- PhotoPrism
+- Invidious
