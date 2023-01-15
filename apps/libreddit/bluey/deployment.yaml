@@ -13,7 +13,7 @@ spec:
         app: libreddit
     spec:
       containers:
-      - image: 
+      - image: libreddit/libreddit:latest
         imagePullPolicy: IfNotPresent
         name: libreddit
         resources:
