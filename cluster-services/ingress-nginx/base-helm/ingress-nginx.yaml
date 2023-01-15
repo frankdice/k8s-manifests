@@ -4,5 +4,5 @@ metadata:
   name: ingress-nginx
   namespace: flux-system
 spec:
-  url: https://grafana.github.io/helm-charts
+  url: https://kubernetes.github.io/ingress-nginx
   interval: 10m
