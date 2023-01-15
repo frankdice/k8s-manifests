@@ -4,4 +4,4 @@ resources:
   - ../base-helm
   - helmrelease.yaml
 patchesStrategicMerge:
-  - service.yaml
+  - values.yaml
