@@ -54,4 +54,6 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 - openbooks
 - Firefly III
 - PhotoPrism
+- Immich
 - Invidious
+- wikijs

@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: libreddit
+spec:
+  selector:
+    matchLabels:
+      app: libreddit
+  template:
+    metadata:
+      labels:
+        app: libreddit
+    spec:
+      containers:
+      - image: 
+        imagePullPolicy: IfNotPresent
+        name: libreddit
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+          limits:
+            memory: "2G"
+            cpu: "2"
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      restartPolicy: Always
+
