@@ -3,3 +3,9 @@ kind: HelmRelease
 metadata:
   name: loki-stack
   namespace: flux-system
+spec:
+  values:
+    loki:
+      common:
+        analytics:
+          reporting_enabled: false
