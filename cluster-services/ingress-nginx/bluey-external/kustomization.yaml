@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../base-helm
+  # - ../base-helm  # Chart already exists from bluey-internal
   - helmrelease.yaml
   - namespace.yaml
 patchesStrategicMerge:
