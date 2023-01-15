@@ -6,10 +6,8 @@ metadata:
 spec:
   values:
     fullNameOverride: ingress-nginx-external
+    nameOverride: ingress-nginx-external
     controller:
-      containerPort:
-        http: 8080
-        https: 8443
       metrics:
         enabled: true
         serviceMonitor: 
@@ -25,3 +23,6 @@ spec:
       ingressClass: nginx-external
       service:
         externalTrafficPolicy: Local
+          ports:
+            http: 8080
+            https: 8443
