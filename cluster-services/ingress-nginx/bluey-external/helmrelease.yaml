@@ -12,5 +12,5 @@ spec:
       version: 4.4.2
       sourceRef:
         kind: HelmRepository
-        name: ingress-nginx-external
+        name: ingress-nginx
         namespace: flux-system
