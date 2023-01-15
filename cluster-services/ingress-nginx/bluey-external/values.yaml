@@ -5,6 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   values:
+    fullNameOverride: ingress-nginx-external
     controller:
       containerPort:
         http: 8080
