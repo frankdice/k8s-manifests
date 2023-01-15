@@ -14,7 +14,6 @@ spec:
         serviceMonitor: 
           enabled: true
       config:
-          allow-snippet-annotations: "true"
           use-forwarded-headers: "true"
           compute-full-forwarded-for: "true"
           enable-real-ip: "true"
