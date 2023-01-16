@@ -1,0 +1,14 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: postgresql
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  dependsOn:
+    - name: external-secrets
+  sourceRef:
+    kind: GitRepository
+    name: k8s-manifests
+  path: ./cluster-services/postgresql/bluey-internal
+  prune: true
