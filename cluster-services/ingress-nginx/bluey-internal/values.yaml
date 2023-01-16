@@ -10,3 +10,5 @@ spec:
         enabled: true
         serviceMonitor: 
           enabled: true
+      service:
+        externalTrafficPolicy: Local
