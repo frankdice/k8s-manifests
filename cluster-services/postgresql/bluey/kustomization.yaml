@@ -5,5 +5,6 @@ resources:
   - postgresql.yaml
   - pv.yaml
   - pvc.yaml
+  - secret-postgresql.yaml
 patchesStrategicMerge:
   - values.yaml
