@@ -10,5 +10,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./cluster-services/postgresql/bluey-internal
+  path: ./cluster-services/postgresql/bluey
   prune: true
