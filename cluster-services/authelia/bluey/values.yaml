@@ -6,6 +6,9 @@ metadata:
 spec:
   values:
     domain: babyvelociraptor.com
+    persistence:
+      enabled: true
+      existingClaim: authelia-config
     configMap:
       authentication_backend:
         ldap:

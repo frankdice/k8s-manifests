@@ -50,6 +50,7 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 
 
 ## Look Into Later
+
 - readarr
 - openbooks
 - Firefly III
