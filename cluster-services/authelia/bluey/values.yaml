@@ -6,6 +6,10 @@ metadata:
 spec:
   values:
     domain: babyvelociraptor.com
+    ingress:
+      enabled: true
+      className: nginx
+      subdomain: auth
     persistence:
       enabled: true
       existingClaim: authelia-config
