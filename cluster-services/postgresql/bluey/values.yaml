@@ -12,6 +12,7 @@ spec:
     global:
       postgresql:
         auth:
+          database: bluey
           existingSecret: postgresql-auth
     primary:
       service:
