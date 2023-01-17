@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authelia
+  namespace: flux-system
+spec:
+  values:
+    domain: babyvelociraptor.com
+    configMap:
+      authentication_backend:
+        ldap:
+          enabled: false
+        file:
+          enabled: true
+      session:
+        redis:
+          enabled: false
+      storage:
+        local:
+          enabled: true
+        postgres:
+          enabled: false
+      notifier:
+        smtp:
+          enabled: false
+        filesystem:
+          enabled: true

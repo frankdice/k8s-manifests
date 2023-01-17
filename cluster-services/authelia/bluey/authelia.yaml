@@ -1,0 +1,24 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: authelia
+  namespace: flux-system
+spec:
+  url: https://charts.authelia.com
+  interval: 10m
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authelia
+  namespace: flux-system
+spec:
+  targetNamespace: authelia
+  interval: 5m
+  chart:
+    spec:
+      chart: authelia
+      sourceRef:
+        kind: HelmRepository
+        name: authelia
+        namespace: flux-system
