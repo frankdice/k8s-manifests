@@ -5,10 +5,17 @@ metadata:
   namespace: flux-system
 spec:
   values:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
     global:
       postgresql:
         auth:
           existingSecret: postgresql-auth
     primary:
+      service:
+        type: LoadBalancer
+        externalTrafficPolicy: Local	
       persistence:
         existingClaim: "postgresql-data"
