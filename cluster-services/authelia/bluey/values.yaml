@@ -8,8 +8,10 @@ spec:
     domain: babyvelociraptor.com
     ingress:
       enabled: true
-      className: nginx
+      className: nginx-external
       subdomain: auth
+      annotations:
+        cert-manager.io/cluster-issuer: cloudflare
     persistence:
       enabled: true
       existingClaim: authelia-config
