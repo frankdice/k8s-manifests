@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: chartmuseum
+  namespace: flux-system
+spec:
+  values:
+    env:
+      open:
+        STORAGE: local
+        ENABLE_METRICS: true
+    persistence:
+      enabled: true
+      existingClaim: chartmuseum-data
+    serviceMonitor:
+      enabled: true
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - name: chartmuseum.babyvelociraptor.com
