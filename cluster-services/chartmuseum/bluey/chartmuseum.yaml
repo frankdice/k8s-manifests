@@ -13,7 +13,7 @@ metadata:
   name: chartmuseum
   namespace: flux-system
 spec:
-  targetNamespace: charmuseum
+  targetNamespace: chartmuseum
   interval: 5m
   chart:
     spec:
