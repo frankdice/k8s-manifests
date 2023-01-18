@@ -9,6 +9,7 @@ spec:
       open:
         STORAGE: local
         ENABLE_METRICS: true
+        DISABLE_API: false
     persistence:
       enabled: true
       existingClaim: chartmuseum-data
