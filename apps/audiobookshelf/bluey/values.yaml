@@ -10,7 +10,7 @@ spec:
       tag: 2.2.12
     service:
       ports:
-        - 13378
+        - 80
     #name is prepended with `<Chartname>-`
     storage: 
       - name: "audiobooks"
