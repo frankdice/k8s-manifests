@@ -29,7 +29,7 @@ spec:
         volumeMounts:
         - mountPath: /comics
           name: comics
-        - mountPath: /config
+        - mountPath: /kavita/config
           name: kavita-config
       restartPolicy: Always
       volumes:
