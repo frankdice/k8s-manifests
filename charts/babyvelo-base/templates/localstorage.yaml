@@ -40,6 +40,9 @@ spec:
       storage: 10Gi
   selector: 
     matchLabels: 
+      app.kubernetes.io/managed-by: Helm
+      helm.toolkit.fluxcd.io/name: {{ $.Release.Name }}
+      helm.toolkit.fluxcd.io/namespace: flux-system
       volumeName: {{ $.Release.Name }}-{{ .name }}
 ---
 {{- end -}}
