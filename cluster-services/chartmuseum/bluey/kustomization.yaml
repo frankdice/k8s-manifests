@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - chartmuseum.yaml
+  - blueycharts-helmrepo.yaml # The URL for this ChartMuseum as a Helm Repo
   - pv.yaml
   - pvc.yaml
 patchesStrategicMerge:
