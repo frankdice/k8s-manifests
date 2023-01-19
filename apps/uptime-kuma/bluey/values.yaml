@@ -13,8 +13,8 @@ spec:
         - 3001
     #name is prepended with `<Chartname>-`
     storage: 
-      - name: "config"
-        mountPath: "/config"
+      - name: "data"
+        mountPath: "/app/data"
     ingress:
       enabled: true
       hosts:
