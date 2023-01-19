@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: cyberchef-helm
+  name: cyberchef
   namespace: flux-system
 spec:
   values:
@@ -14,7 +14,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - host: cyberchef-helm.babyvelociraptor.com
+        - host: cyberchef.babyvelociraptor.com
           paths:
             - path: /
               pathType: Prefix
