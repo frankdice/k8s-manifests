@@ -1,0 +1,3 @@
+helm package babyvelo-base
+curl --data-binary "@babyvelo-base-0.1.0.tgz" http://chartmuseum.babyvelociraptor.com/api/charts
+curl chartmuseum.babyvelociraptor.com/api/charts

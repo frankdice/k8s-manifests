@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cyberchef-helm
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: mpepping/cyberchef 
+      tag: v9.55.0
+    service:
+      ports:
+        - 8000
+    ingress:
+      enabled: true
+      hosts:
+        - host: cyberchef-helm.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix

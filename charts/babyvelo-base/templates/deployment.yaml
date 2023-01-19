@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "babyvelo-base.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "babyvelo-base.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "babyvelo-base.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            {{- range .Values.service.ports }}
+            - name: http
+              containerPort: {{ . }}
+              protocol: TCP
+            {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- if hasKey .Values "storage" }}
+          volumeMounts:
+            {{ range .Values.storage -}}
+            - name: {{ $.Release.Name }}-{{ .name }}
+              mountPath: {{ .mountPath }}
+            {{ end -}}
+          {{ end -}}
+      {{- if hasKey .Values "storage" }}
+      volumes:
+      {{- range .Values.storage -}}
+        {{- if hasKey . "nfs" }}
+        - name: {{ $.Release.Name }}-{{ .name }}
+          nfs:
+            server: {{ .nfs.server }}
+            path: {{ .nfs.path }}
+        {{- else }}
+        - name: {{ $.Release.Name }}-{{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ $.Release.Name }}-{{ .name }}
+        {{ end -}}
+      {{ end -}}
+    {{ end -}}

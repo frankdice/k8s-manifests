@@ -1,0 +1,24 @@
+networks:
+  wireguard:
+    name: wireguard
+
+services:
+  wireguard:
+    container_name: wireguard
+    image: linuxserver/wireguard:1.0.20210914
+    restart: unless-stopped
+
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - SERVERURL=vpn.babyvelociraptor.com
+      - SERVERPORT=51820
+      - PEERS=frankPhone
+    networks:
+      - wireguard
+    ports:
+      - 51820:51820/udp
+    volumes:
+      - /lib/modules:/lib/modules
+      - /root/wireguard:/config

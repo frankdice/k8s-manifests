@@ -58,3 +58,4 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 - Immich
 - Invidious
 - wikijs
+- vikunja
