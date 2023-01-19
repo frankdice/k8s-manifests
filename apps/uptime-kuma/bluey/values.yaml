@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: uptime-kuma
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: louislam/uptime-kuma 
+      tag: 1.19.4-alpine
+    service:
+      ports:
+        - 3001
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "config"
+        mountPath: "/config"
+    ingress:
+      enabled: true
+      hosts:
+        - host: uptime-kuma.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
