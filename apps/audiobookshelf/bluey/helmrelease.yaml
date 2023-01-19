@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &appName audiobookshelf
+  namespace: flux-system
+spec:
+  targetNamespace: *appName
+  releaseName: *appName
+  interval: 5m
+  chart:
+    spec:
+      chart: babyvelo-base
+      sourceRef:
+        kind: HelmRepository
+        name: blueycharts
+        namespace: flux-system

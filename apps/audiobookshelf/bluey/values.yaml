@@ -1,0 +1,36 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: audiobookshelf
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: advplyr/audiobookshelf
+      tag: 2.2.12
+    service:
+      ports:
+        - 13378
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "audiobooks"
+        mountPath: "/audiobooks"
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Audiobooks
+      - name: "podcasts"
+        mountPath: "/podcasts"
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Podcasts
+      - name: "metadata"
+        mountPath: "/metadata"
+      - name: "config"
+        mountPath: "/config"
+    ingress:
+      enabled: true
+      hosts:
+        - host: audiobookshelf.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
