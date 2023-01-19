@@ -4,5 +4,5 @@ metadata:
   name: blueycharts
   namespace: flux-system
 spec:
-  url: http://chartmuseum.babyvelociraptor.com/charts
+  url: http://chartmuseum.babyvelociraptor.com/
   interval: 10m
