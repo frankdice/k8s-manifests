@@ -42,7 +42,7 @@ spec:
       - name: comics
         nfs:
           server: 192.168.1.35
-          path: /Media/Books/Comics
+          path: /Media/Comics
       - name: mylar-config
         persistentVolumeClaim:
           claimName: mylar-config

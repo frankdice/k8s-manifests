@@ -17,7 +17,7 @@ spec:
         mountPath: "/downloads"
         nfs:
           server: 192.168.1.35
-          path: /Media/Downloads
+          path: /Media/Downloads-Bluey
       - name: "books"
         mountPath: "/books"
         nfs:
