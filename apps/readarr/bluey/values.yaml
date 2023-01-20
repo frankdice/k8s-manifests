@@ -1,0 +1,34 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: readarr
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: linuxserver/readarr
+      tag: 0.1.1-develop
+    service:
+      ports:
+        - 8787
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "downloads"
+        mountPath: "/downloads"
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Downloads
+      - name: "books"
+        mountPath: "/books"
+        nfs:
+          server: 192.168.1.35
+          path: /Media/Books
+      - name: "config"
+        mountPath: "/config"
+    ingress:
+      enabled: true
+      hosts:
+        - host: readarr.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
