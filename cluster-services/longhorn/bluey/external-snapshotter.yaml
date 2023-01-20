@@ -1,4 +1,5 @@
 # https://longhorn.io/docs/archives/1.1.1/snapshots-and-backups/csi-snapshot-support/enable-csi-snapshot-support/
+# Also update ALL the f'n namespaces...
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -672,7 +673,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: snapshot-controller
-    namespace: default # TODO: replace with the namespace you want for your controller, e.g. kube-system
+    namespace: kube-system # TODO: replace with the namespace you want for your controller, e.g. kube-system
 roleRef:
   kind: ClusterRole
   # change the name also here if the ClusterRole gets renamed
@@ -699,7 +700,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: snapshot-controller
-    namespace: default # TODO: replace with the namespace you want for your controller, e.g. kube-system
+    namespace: kube-system # TODO: replace with the namespace you want for your controller, e.g. kube-system
 roleRef:
   kind: Role
   name: snapshot-controller-leaderelection
