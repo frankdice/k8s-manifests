@@ -16,13 +16,6 @@ spec:
       - image: linuxserver/bazarr:1.1.4
         imagePullPolicy: IfNotPresent
         name: bazarr
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 6767
           protocol: TCP

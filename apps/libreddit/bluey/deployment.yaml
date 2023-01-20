@@ -21,13 +21,6 @@ spec:
           value: on
         - name: LIBREDDIT_DEFAULT_SHOW_NSFW
           value: on
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 8080
           protocol: TCP
