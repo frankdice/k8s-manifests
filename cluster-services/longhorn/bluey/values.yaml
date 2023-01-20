@@ -9,3 +9,5 @@ spec:
       enabled: true
       ingressClassName: nginx
       host: longhorn.babyvelociraptor.com
+    persistence:
+      numberOfReplicas: 1
