@@ -74,3 +74,12 @@ spec:
             value: "1"
           - name: CSI_SNAPSHOTTER_REPLICA_COUNT
             value: "1"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: longhorn-default-setting
+  namespace: longhorn-system
+data:
+  default-setting.yaml: |
+  backup-target: nfs://192.168.1.35:/Media/Backups/Bluey
