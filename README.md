@@ -59,3 +59,8 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 - Invidious
 - wikijs
 - vikunja
+
+
+## Remove Finalizers
+
+`kubectl get ns <NS> -o json | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/<NS>/finalize" -f -`
