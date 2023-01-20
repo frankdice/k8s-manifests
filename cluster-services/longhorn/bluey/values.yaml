@@ -10,4 +10,4 @@ spec:
       ingressClassName: nginx
       host: longhorn.babyvelociraptor.com
     persistence:
-      numberOfReplicas: 1
+      defaultClassReplicaCount: 1
