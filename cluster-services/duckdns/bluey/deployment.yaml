@@ -16,13 +16,6 @@ spec:
       - image: linuxserver/duckdns:version-13f609b7
         imagePullPolicy: IfNotPresent
         name: duckdns
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         env:
           - name: TOKEN
             valueFrom:

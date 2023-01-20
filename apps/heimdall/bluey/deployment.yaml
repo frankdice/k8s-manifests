@@ -16,13 +16,6 @@ spec:
       - image: linuxserver/heimdall:2.5.5
         imagePullPolicy: IfNotPresent
         name: heimdall
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 80
           protocol: TCP
