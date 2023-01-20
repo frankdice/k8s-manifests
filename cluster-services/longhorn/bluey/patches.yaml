@@ -82,4 +82,4 @@ metadata:
   namespace: longhorn-system
 data:
   default-setting.yaml: |
-  backup-target: nfs://192.168.1.35:/Media/Backups/Bluey
+    backup-target: nfs://192.168.1.35:/Media/Backups/Bluey
