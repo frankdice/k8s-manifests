@@ -7,3 +7,4 @@ resources:
   - firefly-iii-importer.yaml
   - ingress-firefly-iii.yaml
   - ingress-firefly-iii-importer.yaml
+  - secret-firefly-iii.yaml
