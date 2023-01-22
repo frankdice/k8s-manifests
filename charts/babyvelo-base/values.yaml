@@ -39,6 +39,7 @@ ingress:
 # storage: 
 #   - name: "config"
 #     mountPath: "/config"
+#     size: "10Gi"
 #   - name: "data"
 #     mountPath: "/data"
 #     nfs:

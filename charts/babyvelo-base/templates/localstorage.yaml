@@ -3,47 +3,16 @@
 {{- if hasKey . "nfs"  }}
 {{- else }}
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-    name: {{ $.Release.Name }}-{{ .name }}
-    labels: 
-      volumeName: {{ $.Release.Name }}-{{ .name }}
-spec:
-  capacity:
-    storage: 10Gi
-  volumeMode: Filesystem
-  accessModes:
-  - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-path
-  local:
-    path: /storage/{{ $.Release.Name }}-{{ .name }}
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - bluey
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ $.Release.Name }}-{{ .name }}
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: local-path
+  storageClassName: longhorn
   resources:
     requests:
-      storage: 10Gi
-  selector: 
-    matchLabels: 
-      app.kubernetes.io/managed-by: Helm
-      helm.toolkit.fluxcd.io/name: {{ $.Release.Name }}
-      helm.toolkit.fluxcd.io/namespace: flux-system
-      volumeName: {{ $.Release.Name }}-{{ .name }}
+      storage: {{ .size | default "10Gi" | quote }}
 ---
 {{- end -}}
 {{- end -}}
