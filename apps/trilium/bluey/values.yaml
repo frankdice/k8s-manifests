@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: trilium
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: zadam/trilium
+      tag: 0.58.7
+    service:
+      ports:
+        - 5006
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "data"
+        mountPath: "/home/node/trilium-data"
+    ingress:
+      enabled: true
+      hosts:
+        - host: trilium.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix

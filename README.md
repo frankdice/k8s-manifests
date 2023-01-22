@@ -63,6 +63,7 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 - draw.io https://github.com/jgraph/docker-drawio 
 - Streaming TV channels from personal media - https://github.com/jasongdove/ErsatzTV
 - Nightscout - https://github.com/nightscout/cgm-remote-monitor
+- archiveBox (Use n8n to push the RSS feed from linkding to back up the pages of the bookmarks)
 
 ## Remove Finalizers
 
