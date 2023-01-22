@@ -1,12 +1,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: firefly-iii
+  name: actualbudget
   namespace: flux-system
 spec:
   interval: 5m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/firefly-iii/bluey
+  path: ./apps/actualbudget/bluey
   prune: true

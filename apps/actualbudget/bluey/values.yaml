@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: actualbudget
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: jlongster/actual-server
+      tag: 23.1.12-alpine
+    service:
+      ports:
+        - 5006
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "data"
+        mountPath: "/data"
+    ingress:
+      enabled: true
+      hosts:
+        - host: actualbudget.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix

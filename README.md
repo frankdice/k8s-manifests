@@ -59,6 +59,11 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 - Invidious
 - wikijs
 - vikunja
+- kimai - time tracking
+- n8n - Workflows
+- draw.io https://github.com/jgraph/docker-drawio 
+- Streaming TV channels from personal media - https://github.com/jasongdove/ErsatzTV
+- Nightscout - https://github.com/nightscout/cgm-remote-monitor
 
 
 ## Remove Finalizers
