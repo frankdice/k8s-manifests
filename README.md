@@ -51,9 +51,8 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 
 ## Look Into Later
 
-- readarr
+- readarr - Audiobooks stack
 - openbooks
-- Firefly III
 - PhotoPrism
 - Immich
 - Invidious
@@ -64,7 +63,6 @@ https://github.com/AdguardTeam/AdGuardHome/wiki/Docker#resolved   (I just ripped
 - draw.io https://github.com/jgraph/docker-drawio 
 - Streaming TV channels from personal media - https://github.com/jasongdove/ErsatzTV
 - Nightscout - https://github.com/nightscout/cgm-remote-monitor
-
 
 ## Remove Finalizers
 

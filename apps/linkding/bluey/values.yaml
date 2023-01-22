@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: actualbudget
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: sissbruecker/linkding
+      tag: 1.17.1
+    service:
+      ports:
+        - 9090
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "data"
+        mountPath: "/etc/linkding/data"
+    ingress:
+      enabled: true
+      hosts:
+        - host: linkding.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
