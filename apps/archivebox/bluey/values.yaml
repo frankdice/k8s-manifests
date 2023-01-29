@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: archivebox
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: archivebox/archivebox
+      tag: sha-5408028
+    service:
+      ports:
+        - 8000
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "data"
+        mountPath: "/data"
+    ingress:
+      enabled: true
+      hosts:
+        - host: archivebox.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
