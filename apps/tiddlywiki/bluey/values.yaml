@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tiddlywiki
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: elasticdog/tiddlywiki
+      tag: 5.1.23
+    service:
+      ports:
+        - 8080
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "data"
+        mountPath: "/tiddlywiki"
+    ingress:
+      enabled: true
+      hosts:
+        - host: tiddlywiki.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
