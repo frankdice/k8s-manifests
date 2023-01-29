@@ -8,6 +8,7 @@ spec:
     image:
       repository: elasticdog/tiddlywiki
       tag: 5.1.23
+    arguments: ["--listen", "host=0.0.0.0"]
     service:
       ports:
         - 8080

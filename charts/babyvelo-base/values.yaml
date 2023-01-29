@@ -14,6 +14,9 @@ image:
 #   - name: DEMO_GREETING
 #     value: "Hello from the environment"
 
+# arguments: ['--arg3', 'value3', '--arg2', 'value2']
+
+
 nameOverride: ""
 fullnameOverride: ""
 

@@ -1,0 +1,1 @@
+Was disappointed with the scraping from Linkding.

@@ -20,6 +20,10 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:          
+            {{  range .Values.arguments }}
+            - {{ . }}
+            {{ end }}
           env:
             {{- toYaml .Values.resources | nindent 12 }}
           ports:
