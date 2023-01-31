@@ -26,8 +26,12 @@ spec:
             - {{ . }}
             {{ end }}
           {{ end }}
-          env:
-            {{- toYaml .Values.resources | nindent 12 }}
+          {{- if hasKey .Values "env" }}
+          env:          
+            {{  range .Values.env }}
+            - {{ . }}
+            {{ end }}
+          {{ end }}
           ports:
             {{- range .Values.service.ports }}
             - name: http
