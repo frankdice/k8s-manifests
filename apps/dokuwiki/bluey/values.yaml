@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dokuwiki
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: linuxserver/dokuwiki
+      tag: version-2022-07-31a
+    service:
+      ports:
+        - 80
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "config"
+        mountPath: "/config"
+    ingress:
+      enabled: true
+      hosts:
+        - host: dokuwiki.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
