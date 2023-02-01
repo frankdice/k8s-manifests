@@ -1,0 +1,24 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: signoz
+  namespace: flux-system
+spec:
+  url: https://charts.signoz.io
+  interval: 10m
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: signoz
+  namespace: flux-system
+spec:
+  targetNamespace: signoz
+  interval: 5m
+  chart:
+    spec:
+      chart: signoz
+      sourceRef:
+        kind: HelmRepository
+        name: signoz
+        namespace: flux-system
