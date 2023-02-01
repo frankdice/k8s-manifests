@@ -16,13 +16,6 @@ spec:
       - image: adguard/adguardhome:latest
         imagePullPolicy: IfNotPresent
         name: adguard
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 53
           protocol: TCP

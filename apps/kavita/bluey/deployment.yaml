@@ -16,13 +16,6 @@ spec:
       - image: kizaing/kavita:0.6.1
         imagePullPolicy: IfNotPresent
         name: kavita
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 5000
           protocol: TCP

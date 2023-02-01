@@ -16,13 +16,6 @@ spec:
       - image: linuxserver/lidarr:1.0.2
         imagePullPolicy: IfNotPresent
         name: lidarr
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 8686
           protocol: TCP

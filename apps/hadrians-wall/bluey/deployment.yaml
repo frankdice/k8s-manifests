@@ -16,13 +16,6 @@ spec:
       - image: docker.io/babyraptor/hw-solo:e62bce8
         imagePullPolicy: IfNotPresent
         name: hadrians-wall
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 80
           protocol: TCP

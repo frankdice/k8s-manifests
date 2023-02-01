@@ -16,13 +16,6 @@ spec:
       - image: linuxserver/radarr:4.3.2
         imagePullPolicy: IfNotPresent
         name: radarr
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 7878
           protocol: TCP

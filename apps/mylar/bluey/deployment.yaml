@@ -16,13 +16,6 @@ spec:
       - image: linuxserver/mylar3:0.7.0
         imagePullPolicy: IfNotPresent
         name: mylar
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 8090
           protocol: TCP

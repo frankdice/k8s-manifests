@@ -16,13 +16,6 @@ spec:
       - image: linuxserver/sonarr:3.0.9
         imagePullPolicy: IfNotPresent
         name: sonarr
-        resources:
-          requests:
-            memory: "512M"
-            cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
         ports:
         - containerPort: 8989
           protocol: TCP
