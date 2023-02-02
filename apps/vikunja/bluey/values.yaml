@@ -1,0 +1,52 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vikunja-api
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: vikunja/api
+      tag: 0.20.2
+    env:
+      # Default DB is SQLite
+      - name: VIKUNJA_SERVICE_FRONTENDURL
+        value: "http://vikunja.babyvelociraptor.com/api/v1"
+    service:
+      ports:
+        - 3456
+    #name is prepended with `<Chartname>-`
+    storage: 
+      - name: "data"
+        mountPath: "/app/vikunja/files"
+    ingress:
+      enabled: true
+      hosts:
+        - host: vikunja-api.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vikunja-frontend
+  namespace: flux-system
+spec:
+  values:
+    image:
+      repository: vikunja/frontend
+      tag: 0.20.3
+    env:
+      - name: VIKUNJA_API_URL
+        value: "http://vikunja-api.babyvelociraptor.com/api/v1"
+    service:
+      ports:
+        - 80
+    ingress:
+      enabled: true
+      hosts:
+        - host: vikunja.babyvelociraptor.com
+          paths:
+            - path: /
+              pathType: Prefix
