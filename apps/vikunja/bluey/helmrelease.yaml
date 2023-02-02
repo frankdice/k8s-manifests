@@ -4,7 +4,7 @@ metadata:
   name: &appName vikunja-api
   namespace: flux-system
 spec:
-  targetNamespace: *appName
+  targetNamespace: vikunja
   releaseName: *appName
   interval: 5m
   chart:
@@ -22,7 +22,7 @@ metadata:
   name: &appName vikunja-frontend
   namespace: flux-system
 spec:
-  targetNamespace: *appName
+  targetNamespace: vikunja
   releaseName: *appName
   interval: 5m
   chart:
