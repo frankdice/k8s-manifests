@@ -9,9 +9,6 @@ metadata:
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
-    {{- if .Values.ingress.tls }}
-    cert-manager.io/cluster-issuer: cloudflare
-    {{- end }}
   {{- end }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}

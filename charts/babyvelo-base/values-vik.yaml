@@ -1,0 +1,19 @@
+image:
+  repository: vikunja/frontend
+  tag: 0.20.3
+env:
+  - name: VIKUNJA_API_URL
+    value: "http://vikunja-api.babyvelociraptor.com/api/v1"
+service:
+  ports:
+    - 80
+ingress:
+  enabled: true
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare
+  hosts:
+    - host: vikunja.babyvelociraptor.com
+      paths:
+        - path: /
+          pathType: Prefix
