@@ -11,7 +11,7 @@ spec:
     env:
       # Default DB is SQLite
       - name: VIKUNJA_SERVICE_FRONTENDURL
-        value: "http://vikunja.babyvelociraptor.com/api/v1"
+        value: "https://vikunja.babyvelociraptor.com/api/v1"
     service:
       ports:
         - 3456
@@ -21,6 +21,9 @@ spec:
         mountPath: "/app/vikunja/files"
     ingress:
       enabled: true
+      tls: true
+      annotations:
+        cert-manager.io/cluster-issuer: cloudflare
       hosts:
         - host: vikunja-api.babyvelociraptor.com
           paths:
@@ -40,7 +43,7 @@ spec:
       tag: 0.20.3
     env:
       - name: VIKUNJA_API_URL
-        value: "http://vikunja-api.babyvelociraptor.com/api/v1"
+        value: "https://vikunja-api.babyvelociraptor.com/api/v1"
     service:
       ports:
         - 80
