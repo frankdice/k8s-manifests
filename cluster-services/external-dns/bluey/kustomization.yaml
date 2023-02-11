@@ -25,7 +25,7 @@ patchesJson6902:
         value: --txt-owner-id=bluey
       - op: add
         path: /spec/template/spec/containers/0/args/-
-        value: --annotation-filter=nginx.ingress.kubernetes.io/auth-url notin ("https://auth.babyvelociraptor.com/api/verify")
+        value: --annotation-filter=nginx.ingress.kubernetes.io/auth-method notin (GET)
 
 patchesStrategicMerge:
  - |-
