@@ -7,7 +7,6 @@ spec:
   targetNamespace: vikunja
   releaseName: *appName
   interval: 5m
-  reconcileStrategy: Revision
   chart:
     spec:
       chart: babyvelo-base
@@ -26,7 +25,6 @@ spec:
   targetNamespace: vikunja
   releaseName: *appName
   interval: 5m
-  reconcileStrategy: Revision
   chart:
     spec:
       chart: babyvelo-base
