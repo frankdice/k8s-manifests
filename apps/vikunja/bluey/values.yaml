@@ -14,7 +14,8 @@ spec:
         value: "https://vikunja.babyvelociraptor.com/api/v1"
       - name: VIKUNJA_DATABASE_PATH
         value: "/app/vikunja/db/vikunja.db"
-      - name: PUID  # Needed for the migration scripts this app likes to run
+      # Needed for the migration scripts this app likes to run
+      - name: PUID
         value: "1000"
       - name: PGID
         value: "1000"

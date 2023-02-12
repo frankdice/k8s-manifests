@@ -1,19 +1,33 @@
 image:
-  repository: vikunja/frontend
-  tag: 0.20.3
+  repository: vikunja/api
+  tag: 0.20.2
 env:
-  - name: VIKUNJA_API_URL
-    value: "http://vikunja-api.babyvelociraptor.com/api/v1"
+  # Default DB is SQLite
+  - name: VIKUNJA_SERVICE_FRONTENDURL
+    value: "https://vikunja.babyvelociraptor.com/api/v1"
+  - name: VIKUNJA_DATABASE_PATH
+    value: "/app/vikunja/db/vikunja.db"
+  # Needed for the migration scripts this app likes to run
+  - name: PUID
+    value: "1000"
+  - name: PGID
+    value: "1000"
 service:
   ports:
-    - 80
+    - 3456
+#name is prepended with `<Chartname>-`
+storage: 
+  - name: "files"
+    mountPath: "/app/vikunja/files"
+  - name: "db"
+    mountPath: "/app/vikunja/db"
 ingress:
   enabled: true
   tls: true
   annotations:
     cert-manager.io/cluster-issuer: cloudflare
   hosts:
-    - host: vikunja.babyvelociraptor.com
+    - host: vikunja-api.babyvelociraptor.com
       paths:
         - path: /
           pathType: Prefix
