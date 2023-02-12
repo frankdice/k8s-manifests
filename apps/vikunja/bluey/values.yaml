@@ -12,13 +12,17 @@ spec:
       # Default DB is SQLite
       - name: VIKUNJA_SERVICE_FRONTENDURL
         value: "https://vikunja.babyvelociraptor.com/api/v1"
+      - name: VIKUNJA_DATABASE_PATH
+        value: "/app/vikunja/db/vikunja.db"
     service:
       ports:
         - 3456
     #name is prepended with `<Chartname>-`
     storage: 
-      - name: "data"
+      - name: "files"
         mountPath: "/app/vikunja/files"
+      - name: "db"
+        mountPath: "/app/vikunja/db"
     ingress:
       enabled: true
       tls: true
