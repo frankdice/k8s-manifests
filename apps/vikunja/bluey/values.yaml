@@ -16,9 +16,9 @@ spec:
         value: "/app/vikunja/db/vikunja.db"
       # Needed for the migration scripts this app likes to run
       - name: PUID
-        value: "1000"
+        value: 1000
       - name: PGID
-        value: "1000"
+        value: 1000
     service:
       ports:
         - 3456
