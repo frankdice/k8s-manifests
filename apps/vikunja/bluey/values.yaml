@@ -30,7 +30,7 @@ spec:
         mountPath: "/app/vikunja/db"
     securityContext:
       fsGroup: 1000
-      fsGroupChangePolicy: "OnRootMismatch"
+      fsGroupChangePolicy: "Always"
     ingress:
       enabled: true
       tls: true
