@@ -28,6 +28,9 @@ spec:
         mountPath: "/app/vikunja/files"
       - name: "db"
         mountPath: "/app/vikunja/db"
+    securityContext:
+      fsGroup: 1000
+      fsGroupChangePolicy: "OnRootMismatch"
     ingress:
       enabled: true
       tls: true

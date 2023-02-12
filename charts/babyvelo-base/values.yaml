@@ -62,3 +62,10 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+securityContext: {}
+  # https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  # runAsUser: 1000
+  # runAsGroup: 1000
+  # fsGroup: 1000
+  # fsGroupChangePolicy: "OnRootMismatch"
