@@ -14,6 +14,8 @@ spec:
         auth:
           database: bluey
           existingSecret: postgresql-auth
+          secretKey:
+            adminPasswordKey: postgres-password
     primary:
       service:
         type: LoadBalancer
