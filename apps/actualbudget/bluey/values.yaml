@@ -6,8 +6,8 @@ metadata:
 spec:
   values:
     image:
-      repository: jlongster/actual-server
-      tag: 23.1.12-alpine
+      repository: actualbudget/actual-server
+      tag: 24.2.0-alpine
     service:
       ports:
         - 5006
