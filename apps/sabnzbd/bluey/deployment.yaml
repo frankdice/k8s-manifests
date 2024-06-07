@@ -13,7 +13,7 @@ spec:
         app: sabnzbd
     spec:
       containers:
-      - image: linuxserver/sabnzbd:amd64-3.7.1
+      - image: linuxserver/sabnzbd:amd64-4.3.2
         imagePullPolicy: IfNotPresent
         name: sabnzbd
         resources:
