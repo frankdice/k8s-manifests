@@ -20,9 +20,10 @@ spec:
           requests:
             memory: "512M"
             cpu: "1"
-          limits:
-            memory: "2G"
-            cpu: "2"
+# Removing limits, this can go nuts until further notice
+#          limits:
+#            memory: "2G"
+#            cpu: "2"
         ports:
         - containerPort: 8080
           protocol: TCP
