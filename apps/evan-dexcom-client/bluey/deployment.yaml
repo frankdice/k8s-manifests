@@ -16,6 +16,19 @@ spec:
       - image: docker.io/babyraptor/evan-dexcom-client:a0ccbd2
         imagePullPolicy: IfNotPresent
         name: evan-dexcom-client
+        env:
+          - name: DEXCOM_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: evan-dexcom-login
+                key: DEXCOM_USERNAME
+                optional: false
+          - name: DEXCOM_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: evan-dexcom-login
+                key: DEXCOM_PASSWORD
+                optional: false
         ports:
         - containerPort: 80
           protocol: TCP
