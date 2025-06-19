@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evan-dexcom-client
+spec:
+  selector:
+    matchLabels:
+      app: evan-dexcom-client
+  template:
+    metadata:
+      labels:
+        app: evan-dexcom-client
+    spec:
+      containers:
+      - image: docker.io/babyraptor/evan-dexcom-client:77a1e9c
+        imagePullPolicy: IfNotPresent
+        name: evan-dexcom-client
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
+

@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: evan-dexcom-client
+  name: evan-dexcom-client
+spec:
+  ports:
+  - name: web
+    port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: evan-dexcom-client
+  type: ClusterIP
