@@ -13,7 +13,7 @@ spec:
         app: evan-dexcom-client
     spec:
       containers:
-      - image: docker.io/babyraptor/evan-dexcom-client:a0ccbd2
+      - image: docker.io/babyraptor/evan-dexcom-client:65ac1f9
         imagePullPolicy: IfNotPresent
         name: evan-dexcom-client
         env:
