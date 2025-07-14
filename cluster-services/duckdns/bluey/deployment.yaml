@@ -13,7 +13,7 @@ spec:
         app: duckdns
     spec:
       containers:
-      - image: linuxserver/duckdns:version-13f609b7
+      - image: linuxserver/duckdns:version-63bf4c1a
         imagePullPolicy: IfNotPresent
         name: duckdns
         env:
