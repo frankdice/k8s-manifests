@@ -4,5 +4,5 @@ resources:
   - longhorn.yaml
   - ingress.yaml
   - external-snapshotter.yaml
-patchesStrategicMerge:
-  - patches.yaml
+# patchesStrategicMerge:
+#   - patches.yaml
