@@ -31,55 +31,55 @@
 # spec:
 #   replicas: 1
 # ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: longhorn-storageclass
-  namespace: longhorn-system
-data:
-  storageclass.yaml: |
-    kind: StorageClass
-    apiVersion: storage.k8s.io/v1
-    metadata:
-      name: longhorn
-      annotations:
-        storageclass.kubernetes.io/is-default-class: "false"
-    provisioner: driver.longhorn.io
-    allowVolumeExpansion: true
-    reclaimPolicy: "Retain"
-    volumeBindingMode: Immediate
-    parameters:
-      numberOfReplicas: "1"
-      staleReplicaTimeout: "30"
-      fromBackup: ""
-      fsType: "ext4"
-      dataLocality: "disabled"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: longhorn-driver-deployer
-  namespace: longhorn-system
-spec:
-  template:
-    spec:
-      containers:
-        - name: longhorn-driver-deployer
-          env:
-          - name: CSI_ATTACHER_REPLICA_COUNT
-            value: "1"
-          - name: CSI_PROVISIONER_REPLICA_COUNT
-            value: "1"
-          - name: CSI_RESIZER_REPLICA_COUNT
-            value: "1"
-          - name: CSI_SNAPSHOTTER_REPLICA_COUNT
-            value: "1"
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: longhorn-default-setting
-  namespace: longhorn-system
-data:
-  default-setting.yaml: |
-    backup-target: nfs://192.168.1.35:/Media/Backups/Bluey
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: longhorn-storageclass
+#   namespace: longhorn-system
+# data:
+#   storageclass.yaml: |
+#     kind: StorageClass
+#     apiVersion: storage.k8s.io/v1
+#     metadata:
+#       name: longhorn
+#       annotations:
+#         storageclass.kubernetes.io/is-default-class: "false"
+#     provisioner: driver.longhorn.io
+#     allowVolumeExpansion: true
+#     reclaimPolicy: "Retain"
+#     volumeBindingMode: Immediate
+#     parameters:
+#       numberOfReplicas: "1"
+#       staleReplicaTimeout: "30"
+#       fromBackup: ""
+#       fsType: "ext4"
+#       dataLocality: "disabled"
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: longhorn-driver-deployer
+#   namespace: longhorn-system
+# spec:
+#   template:
+#     spec:
+#       containers:
+#         - name: longhorn-driver-deployer
+#           env:
+#           - name: CSI_ATTACHER_REPLICA_COUNT
+#             value: "1"
+#           - name: CSI_PROVISIONER_REPLICA_COUNT
+#             value: "1"
+#           - name: CSI_RESIZER_REPLICA_COUNT
+#             value: "1"
+#           - name: CSI_SNAPSHOTTER_REPLICA_COUNT
+#             value: "1"
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: longhorn-default-setting
+#   namespace: longhorn-system
+# data:
+#   default-setting.yaml: |
+#     backup-target: nfs://192.168.1.35:/Media/Backups/Bluey
