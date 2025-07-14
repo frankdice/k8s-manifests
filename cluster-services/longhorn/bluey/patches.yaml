@@ -1,36 +1,36 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: longhorn-recovery-backend
-  namespace: longhorn-system
-spec:
-  replicas: 1
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: longhorn-ui
-  namespace: longhorn-system
-spec:
-  replicas: 1
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: longhorn-conversion-webhook
-  namespace: longhorn-system
-spec:
-  replicas: 1
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-  name: longhorn-admission-webhook
-  namespace: longhorn-system
-spec:
-  replicas: 1
----
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: longhorn-recovery-backend
+#   namespace: longhorn-system
+# spec:
+#   replicas: 1
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: longhorn-ui
+#   namespace: longhorn-system
+# spec:
+#   replicas: 1
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: longhorn-conversion-webhook
+#   namespace: longhorn-system
+# spec:
+#   replicas: 1
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   labels:
+#   name: longhorn-admission-webhook
+#   namespace: longhorn-system
+# spec:
+#   replicas: 1
+# ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
