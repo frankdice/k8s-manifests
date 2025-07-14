@@ -13,7 +13,7 @@ spec:
         app: libreddit
     spec:
       containers:
-      - image: libreddit/libreddit:latest
+      - image: quay.io/redlib/redlib:latest
         imagePullPolicy: IfNotPresent
         name: libreddit
         env:
