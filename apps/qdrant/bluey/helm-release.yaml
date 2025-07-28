@@ -19,6 +19,7 @@ spec:
   values:
     ingress:
       enabled: true
+      ingressClassName: nginx
       hosts:
         - host: qdrant.babyvelociraptor.com
           paths:
