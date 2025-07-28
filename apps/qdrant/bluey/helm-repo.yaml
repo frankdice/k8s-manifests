@@ -1,0 +1,9 @@
+# Reference to Helm repository
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: qdrant
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://qdrant.github.io/qdrant-helm
