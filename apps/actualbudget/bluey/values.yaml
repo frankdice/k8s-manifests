@@ -17,6 +17,9 @@ spec:
         mountPath: "/data"
     ingress:
       enabled: true
+      tls: true
+      annotations:
+        cert-manager.io/cluster-issuer: cloudflare
       hosts:
         - host: actualbudget.babyvelociraptor.com
           paths:
