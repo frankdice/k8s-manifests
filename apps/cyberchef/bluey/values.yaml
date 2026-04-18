@@ -14,6 +14,8 @@ spec:
     ingress:
       enabled: true
       className: haproxy-ingress
+      annotations:
+        cert-manager.io/cluster-issuer: cloudflare
       tls:
         - hosts:
           - cyberchef.babyvelociraptor.com
