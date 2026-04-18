@@ -13,6 +13,7 @@ spec:
         - 8000
     ingress:
       enabled: true
+      className: haproxy-ingress
       hosts:
         - host: cyberchef.babyvelociraptor.com
           paths:
