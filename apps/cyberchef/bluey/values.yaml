@@ -14,6 +14,9 @@ spec:
     ingress:
       enabled: true
       className: haproxy-ingress
+      tls:
+        - hosts:
+          - cyberchef.babyvelociraptor.com
       hosts:
         - host: cyberchef.babyvelociraptor.com
           paths:
