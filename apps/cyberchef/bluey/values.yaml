@@ -17,6 +17,7 @@ spec:
       tls:
         - hosts:
           - cyberchef.babyvelociraptor.com
+          - cybershef2.babyvelociraptor.com
       hosts:
         - host: cyberchef.babyvelociraptor.com
           paths:
