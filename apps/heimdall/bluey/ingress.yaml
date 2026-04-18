@@ -5,8 +5,12 @@ metadata:
   namespace: heimdall
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 8m
+    cert-manager.io/cluster-issuer: cloudflare
 spec:
-  ingressClassName: nginx
+  ingressClassName: haproxy-ingress
+  tls:
+    - hosts:
+        - heimdall.babyvelociraptor.com
   rules:
     - host: heimdall.babyvelociraptor.com
       http:
