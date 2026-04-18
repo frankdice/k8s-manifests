@@ -7,7 +7,7 @@ spec:
   values:
     image:
       repository: mpepping/cyberchef 
-      tag: v9.55.0
+      tag: v10.23.0
     service:
       ports:
         - 8000

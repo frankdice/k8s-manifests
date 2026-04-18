@@ -10,7 +10,8 @@ spec:
   ingressClassName: haproxy-ingress
   tls:
     - hosts:
-        - heimdall.babyvelociraptor.com
+      - heimdall.babyvelociraptor.com
+      secretName: heimdall-tls
   rules:
     - host: heimdall.babyvelociraptor.com
       http:
