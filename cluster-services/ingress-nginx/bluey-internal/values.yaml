@@ -12,3 +12,4 @@ spec:
           enabled: true
       service:
         externalTrafficPolicy: Local
+        enableHttps: false
