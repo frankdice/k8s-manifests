@@ -7,7 +7,7 @@ spec:
   values:
     image:
       repository: louislam/uptime-kuma 
-      tag: 1.19.4-alpine
+      tag: 2.2.1
     service:
       ports:
         - 3001
@@ -17,6 +17,12 @@ spec:
         mountPath: "/app/data"
     ingress:
       enabled: true
+      className: haproxy-ingress
+      annotations:
+        cert-manager.io/cluster-issuer: cloudflare
+      tls:
+        - hosts:
+          - uptime-kuma.babyvelociraptor.com
       hosts:
         - host: uptime-kuma.babyvelociraptor.com
           paths:
