@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: primal
+spec:
+  selector:
+    matchLabels:
+      app: primal
+  template:
+    metadata:
+      labels:
+        app: primal
+    spec:
+      containers:
+      - image: docker.io/babyraptor/primal:sha-031cd6f
+        imagePullPolicy: IfNotPresent
+        name: primal
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
+
