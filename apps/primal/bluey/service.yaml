@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: primal
+  name: primal
+spec:
+  ports:
+  - name: web
+    port: 8501
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: primal
+  type: ClusterIP
