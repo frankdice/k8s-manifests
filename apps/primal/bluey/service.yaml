@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
   - name: web
-    port: 8501
+    port: 80
     protocol: TCP
-    targetPort: 80
+    targetPort: 8501
   selector:
     app: primal
   type: ClusterIP
