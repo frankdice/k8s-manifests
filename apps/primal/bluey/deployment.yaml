@@ -13,7 +13,7 @@ spec:
         app: primal
     spec:
       containers:
-      - image: docker.io/babyraptor/primal:sha-9a71762
+      - image: docker.io/babyraptor/primal:sha-91e01c9
         imagePullPolicy: IfNotPresent
         name: primal
         ports:
