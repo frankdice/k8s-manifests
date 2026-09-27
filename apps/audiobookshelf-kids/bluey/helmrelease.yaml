@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &appName audiobookshelf
+  name: &appName audiobookshelf-kids
   namespace: flux-system
 spec:
   targetNamespace: *appName
