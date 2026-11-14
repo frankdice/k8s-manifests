@@ -1,5 +1,0 @@
-[
-    {"op": "replace",
-    "path": "/spec/template/spec/containers/0/args/2",
-    "value": "--leader-election-namespace=cert-manager"}
-]   

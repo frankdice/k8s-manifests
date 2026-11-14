@@ -1,9 +1,0 @@
-[
-    {"op": "replace",
-    "path": "/spec/template/spec/containers/0/args/2",
-    "value": "--controller-class=k8s.io/ingress-nginx-external"},
-
-    {"op": "replace",
-    "path": "/spec/template/spec/containers/0/args/3",
-    "value": "--ingress-class=nginx-external"}
-]   

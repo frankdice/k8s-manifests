@@ -1,14 +1,14 @@
 # How to manage values files. Ref: https://fluxcd.io/docs/guides/helmreleases/#refer-to-values-inside-the-chart
 # How to inject values: https://fluxcd.io/docs/guides/helmreleases/#cloud-storage
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: external-secrets
   namespace: flux-system
 spec:
   # Override Release name to avoid the pattern Namespace-Release
-  # Ref: https://fluxcd.io/docs/components/helm/api/#helm.toolkit.fluxcd.io/v2beta1.HelmRelease
+  # Ref: https://fluxcd.io/docs/components/helm/api/#helm.toolkit.fluxcd.io/v2.HelmRelease
   releaseName: external-secrets
   targetNamespace: external-secrets
   interval: 10m

@@ -4,3 +4,4 @@ namespace: flux-system
 resources:
   - ../base
   - github.yaml
+  - cluster-settings.yaml
