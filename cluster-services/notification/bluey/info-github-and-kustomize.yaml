@@ -1,4 +1,4 @@
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
+apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Alert
 metadata:
   name: github
@@ -6,7 +6,8 @@ metadata:
 spec:
   providerRef: 
     name: discord
-  summary: "Bluey"
+  eventMetadata:
+    summary: "Bluey"
   eventSeverity: info
   eventSources:
     - kind: GitRepository
