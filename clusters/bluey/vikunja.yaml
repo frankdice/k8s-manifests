@@ -11,6 +11,8 @@ spec:
   path: ./apps/vikunja
   prune: true
   postBuild:
+    substitute:
+      INGRESS_CLASS: haproxy-ingress
     substituteFrom:
       - kind: ConfigMap
         name: cluster-settings

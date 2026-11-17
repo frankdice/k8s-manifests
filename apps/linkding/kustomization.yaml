@@ -4,6 +4,7 @@ namespace: linkding
 resources:
   - ../_base
 components:
+  - ../_components/ingress-tls
   - ../_components/pvc-longhorn
 images:
   - name: app-image

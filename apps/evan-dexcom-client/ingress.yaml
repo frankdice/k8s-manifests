@@ -3,8 +3,14 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: evan-dexcom-client
   namespace: evan-dexcom-client
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare
 spec:
-  ingressClassName: nginx
+  ingressClassName: haproxy-ingress
+  tls:
+    - hosts:
+        - evan-dexcom-client.${SECRET_DOMAIN}
+      secretName: evan-dexcom-client-tls
   rules:
     - host: evan-dexcom-client.${SECRET_DOMAIN}
       http:
