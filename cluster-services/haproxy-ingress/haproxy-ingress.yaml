@@ -153,6 +153,7 @@ spec:
         image: haproxytech/kubernetes-ingress
         args:
           - --configmap=haproxy-controller/haproxy-kubernetes-ingress
+          - --ingress.class=haproxy-ingress
         securityContext:
           runAsNonRoot: true
           allowPrivilegeEscalation: false
@@ -214,12 +215,14 @@ metadata:
 spec:
   selector:
     run: haproxy-ingress
-  type: NodePort
+  type: LoadBalancer
+  externalTrafficPolicy: Local
   ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 8080
+  # Port 80 is currently bound by ingress-nginx; uncomment once ingress-nginx is retired in Step 4.5
+  # - name: http
+  #   port: 80
+  #   protocol: TCP
+  #   targetPort: 8080
   - name: https
     port: 443
     protocol: TCP
