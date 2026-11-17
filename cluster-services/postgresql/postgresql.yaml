@@ -1,0 +1,43 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: postgresql
+  namespace: flux-system
+spec:
+  url: https://charts.bitnami.com/bitnami
+  interval: 10m
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: postgresql
+  namespace: flux-system
+spec:
+  targetNamespace: postgresql
+  interval: 5m
+  chart:
+    spec:
+      chart: postgresql
+      version: "12.12.10"
+      sourceRef:
+        kind: HelmRepository
+        name: postgresql
+        namespace: flux-system
+  values:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    global:
+      postgresql:
+        auth:
+          database: bluey
+          existingSecret: postgresql-auth
+          secretKey:
+            adminPasswordKey: postgres-password
+    primary:
+      service:
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+      persistence:
+        existingClaim: "postgresql-data"

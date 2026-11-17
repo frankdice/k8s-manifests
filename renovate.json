@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "dependencyDashboard": true,
+  "automerge": false,
+  "flux": {
+    "managerFilePatterns": [
+      "/(^|/)(clusters|cluster-services|apps)/.+\\.ya?ml$/"
+    ]
+  },
+  "kubernetes": {
+    "managerFilePatterns": [
+      "/(^|/)(cluster-services|apps)/.+\\.ya?ml$/"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Label all Helm chart updates",
+      "matchDatasources": [
+        "helm"
+      ],
+      "addLabels": [
+        "helm"
+      ]
+    },
+    {
+      "description": "Label all container image updates",
+      "matchDatasources": [
+        "docker"
+      ],
+      "addLabels": [
+        "container"
+      ]
+    }
+  ]
+}
