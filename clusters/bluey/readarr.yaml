@@ -4,9 +4,18 @@ metadata:
   name: readarr
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/readarr/bluey
+  path: ./apps/readarr
   prune: true
+  postBuild:
+    substitute:
+      APP_NAME: readarr
+      APP_PORT: "8787"
+      PVC_NAME: config
+      PVC_MOUNT_PATH: /config
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

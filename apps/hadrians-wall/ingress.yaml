@@ -1,0 +1,18 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: hadrians-wall
+  namespace: hadrians-wall
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: hadrians-wall.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hadrians-wall
+                port:
+                  name: web

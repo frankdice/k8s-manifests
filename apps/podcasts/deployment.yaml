@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  selector:
+    matchLabels:
+      app: podcasts
+  template:
+    metadata:
+      labels:
+        app: podcasts
+    spec:
+      containers:
+      - image: docker.io/babyraptor/dir2cast:69adefa
+        imagePullPolicy: IfNotPresent
+        name: jellyfin
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/www/html/media
+          name: media
+          readOnly: True
+      restartPolicy: Always
+      volumes:
+      - name: media
+        nfs:
+          server: ${NAS_IP}
+          path: /Media/Audiobooks

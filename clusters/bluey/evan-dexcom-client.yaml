@@ -4,9 +4,13 @@ metadata:
   name: evan-dexcom-client
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/evan-dexcom-client/bluey
+  path: ./apps/evan-dexcom-client
   prune: true
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

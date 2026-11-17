@@ -1,0 +1,28 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: kavita
+  namespace: kavita
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: kavita.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kavita
+                port:
+                  name: web
+    - host: comics.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kavita
+                port:
+                  name: web

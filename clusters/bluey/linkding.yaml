@@ -4,9 +4,18 @@ metadata:
   name: linkding
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/linkding/bluey
+  path: ./apps/linkding
   prune: true
+  postBuild:
+    substitute:
+      APP_NAME: linkding
+      APP_PORT: "9090"
+      PVC_NAME: data
+      PVC_MOUNT_PATH: /etc/linkding/data
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

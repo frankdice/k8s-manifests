@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: linkding
+resources:
+  - ../_base
+components:
+  - ../_components/pvc-longhorn
+images:
+  - name: app-image
+    newName: sissbruecker/linkding
+    newTag: 1.17.1

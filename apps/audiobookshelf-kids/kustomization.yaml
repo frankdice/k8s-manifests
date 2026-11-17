@@ -1,0 +1,44 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: audiobookshelf-kids
+resources:
+  - ../_base
+  - pvc-metadata.yaml
+components:
+  - ../_components/pvc-longhorn
+images:
+  - name: app-image
+    newName: advplyr/audiobookshelf
+    newTag: 2.36.1
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: ignored
+      spec:
+        template:
+          spec:
+            containers:
+              - name: ${APP_NAME}
+                volumeMounts:
+                  - name: ${APP_NAME}-metadata
+                    mountPath: /metadata
+                  - name: audiobooks
+                    mountPath: /audiobooks
+                  - name: podcasts
+                    mountPath: /podcasts
+            volumes:
+              - name: ${APP_NAME}-metadata
+                persistentVolumeClaim:
+                  claimName: ${APP_NAME}-metadata
+              - name: audiobooks
+                nfs:
+                  server: ${NAS_IP}
+                  path: /Media/Kids/Audiobooks
+              - name: podcasts
+                nfs:
+                  server: ${NAS_IP}
+                  path: /Media/Kids/Podcasts

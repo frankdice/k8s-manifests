@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+spec:
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      containers:
+      - image: linuxserver/radarr:5.6.0
+        imagePullPolicy: IfNotPresent
+        name: radarr
+        ports:
+        - containerPort: 7878
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /downloads
+          name: downloads
+        - mountPath: /movies
+          name: movies
+        - mountPath: /config
+          name: radarr-config
+      restartPolicy: Always
+      volumes:
+      - name: downloads
+        nfs:
+          server: ${NAS_IP}
+          path: /Media/Downloads-Bluey
+      - name: movies
+        nfs:
+          server: ${NAS_IP}
+          path: /Media/Movies
+      - name: radarr-config
+        persistentVolumeClaim:
+          claimName: radarr-config

@@ -4,9 +4,13 @@ metadata:
   name: heimdall
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/heimdall/bluey
+  path: ./apps/heimdall
   prune: true
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

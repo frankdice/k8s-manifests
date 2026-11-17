@@ -4,11 +4,13 @@ metadata:
   name: hadrians-wall
   namespace: flux-system
 spec:
-  interval: 5m0s
-  dependsOn:
-    - name: external-secrets
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/hadrians-wall/bluey
+  path: ./apps/hadrians-wall
   prune: true
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

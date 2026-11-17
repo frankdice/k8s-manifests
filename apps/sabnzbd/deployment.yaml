@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sabnzbd
+spec:
+  selector:
+    matchLabels:
+      app: sabnzbd
+  template:
+    metadata:
+      labels:
+        app: sabnzbd
+    spec:
+      containers:
+      - image: linuxserver/sabnzbd:amd64-4.3.2
+        imagePullPolicy: IfNotPresent
+        name: sabnzbd
+        resources:
+          requests:
+            memory: "512M"
+            cpu: "1"
+# Removing limits, this can go nuts until further notice
+#          limits:
+#            memory: "2G"
+#            cpu: "2"
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /downloads
+          name: downloads
+        - mountPath: /config
+          name: sabnzbd-config
+      restartPolicy: Always
+      volumes:
+      - name: downloads
+        nfs:
+          server: ${NAS_IP}
+          path: /Media/Downloads-Bluey
+      - name: sabnzbd-config
+        persistentVolumeClaim:
+          claimName: sabnzbd-config

@@ -4,9 +4,18 @@ metadata:
   name: actualbudget
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/actualbudget/bluey
+  path: ./apps/actualbudget
   prune: true
+  postBuild:
+    substitute:
+      APP_NAME: actualbudget
+      APP_PORT: "5006"
+      PVC_NAME: data
+      PVC_MOUNT_PATH: /data
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

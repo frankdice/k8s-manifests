@@ -4,9 +4,13 @@ metadata:
   name: adguard
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/adguard/bluey
+  path: ./apps/adguard
   prune: true
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

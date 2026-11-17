@@ -1,0 +1,183 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vikunja
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vikunja-api-files
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vikunja-api-db
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vikunja-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vikunja-api
+  template:
+    metadata:
+      labels:
+        app: vikunja-api
+    spec:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: "Always"
+      containers:
+        - name: vikunja-api
+          image: vikunja-api-image
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: VIKUNJA_SERVICE_FRONTENDURL
+              value: "https://vikunja.${SECRET_DOMAIN}/api/v1"
+            - name: VIKUNJA_DATABASE_PATH
+              value: "/app/vikunja/db/vikunja.db"
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+          ports:
+            - name: web
+              containerPort: 3456
+              protocol: TCP
+          volumeMounts:
+            - name: vikunja-api-files
+              mountPath: /app/vikunja/files
+            - name: vikunja-api-db
+              mountPath: /app/vikunja/db
+      restartPolicy: Always
+      volumes:
+        - name: vikunja-api-files
+          persistentVolumeClaim:
+            claimName: vikunja-api-files
+        - name: vikunja-api-db
+          persistentVolumeClaim:
+            claimName: vikunja-api-db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vikunja-api
+  labels:
+    app: vikunja-api
+spec:
+  type: ClusterIP
+  ports:
+    - name: web
+      port: 3456
+      targetPort: 3456
+      protocol: TCP
+  selector:
+    app: vikunja-api
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vikunja-api
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare
+spec:
+  ingressClassName: ${INGRESS_CLASS:=nginx}
+  tls:
+    - hosts:
+        - vikunja-api.${SECRET_DOMAIN}
+      secretName: vikunja-api-tls
+  rules:
+    - host: vikunja-api.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vikunja-api
+                port:
+                  name: web
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vikunja-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vikunja-frontend
+  template:
+    metadata:
+      labels:
+        app: vikunja-frontend
+    spec:
+      containers:
+        - name: vikunja-frontend
+          image: vikunja-frontend-image
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: VIKUNJA_API_URL
+              value: "https://vikunja-api.${SECRET_DOMAIN}/api/v1"
+          ports:
+            - name: web
+              containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vikunja-frontend
+  labels:
+    app: vikunja-frontend
+spec:
+  type: ClusterIP
+  ports:
+    - name: web
+      port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: vikunja-frontend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vikunja-frontend
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare
+spec:
+  ingressClassName: ${INGRESS_CLASS:=nginx}
+  tls:
+    - hosts:
+        - vikunja.${SECRET_DOMAIN}
+      secretName: vikunja-frontend-tls
+  rules:
+    - host: vikunja.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vikunja-frontend
+                port:
+                  name: web

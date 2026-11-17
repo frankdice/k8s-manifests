@@ -4,9 +4,19 @@ metadata:
   name: uptime-kuma
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/uptime-kuma/bluey
+  path: ./apps/uptime-kuma
   prune: true
+  postBuild:
+    substitute:
+      APP_NAME: uptime-kuma
+      APP_PORT: "3001"
+      INGRESS_CLASS: haproxy-ingress
+      PVC_NAME: data
+      PVC_MOUNT_PATH: /app/data
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings

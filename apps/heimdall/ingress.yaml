@@ -1,0 +1,25 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: heimdall
+  namespace: heimdall
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 8m
+    cert-manager.io/cluster-issuer: cloudflare
+spec:
+  ingressClassName: haproxy-ingress
+  tls:
+    - hosts:
+      - heimdall.${SECRET_DOMAIN}
+      secretName: heimdall-tls
+  rules:
+    - host: heimdall.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: heimdall
+                port:
+                  name: web

@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+spec:
+  selector:
+    matchLabels:
+      app: kavita
+  template:
+    metadata:
+      labels:
+        app: kavita
+    spec:
+      containers:
+      - image: kizaing/kavita:0.6.1
+        imagePullPolicy: IfNotPresent
+        name: kavita
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /comics
+          name: comics
+        - mountPath: /kavita/config
+          name: kavita-config
+      restartPolicy: Always
+      volumes:
+      - name: comics
+        nfs:
+          server: ${NAS_IP}
+          path: /Media/Comics
+      - name: kavita-config
+        persistentVolumeClaim:
+          claimName: kavita-config
