@@ -4,9 +4,13 @@ metadata:
   name: longhorn
   namespace: longhorn-system
   annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+    cert-manager.io/cluster-issuer: cloudflare
 spec:
-  ingressClassName: nginx
+  ingressClassName: haproxy-ingress
+  tls:
+    - hosts:
+        - longhorn.babyvelociraptor.com
+      secretName: longhorn-tls
   rules:
     - host: longhorn.babyvelociraptor.com
       http:

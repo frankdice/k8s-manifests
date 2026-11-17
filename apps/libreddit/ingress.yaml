@@ -3,8 +3,14 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: libreddit
   namespace: libreddit
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare
 spec:
-  ingressClassName: nginx
+  ingressClassName: haproxy-ingress
+  tls:
+    - hosts:
+        - libreddit.${SECRET_DOMAIN}
+      secretName: libreddit-tls
   rules:
     - host: libreddit.${SECRET_DOMAIN}
       http:

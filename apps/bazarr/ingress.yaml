@@ -4,9 +4,13 @@ metadata:
   name: bazarr
   namespace: bazarr
   annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: 8m
+    cert-manager.io/cluster-issuer: cloudflare
 spec:
-  ingressClassName: nginx
+  ingressClassName: haproxy-ingress
+  tls:
+    - hosts:
+        - bazarr.${SECRET_DOMAIN}
+      secretName: bazarr-tls
   rules:
     - host: bazarr.${SECRET_DOMAIN}
       http:

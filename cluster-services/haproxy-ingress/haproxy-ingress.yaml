@@ -218,11 +218,10 @@ spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   ports:
-  # Port 80 is currently bound by ingress-nginx; uncomment once ingress-nginx is retired in Step 4.5
-  # - name: http
-  #   port: 80
-  #   protocol: TCP
-  #   targetPort: 8080
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
   - name: https
     port: 443
     protocol: TCP

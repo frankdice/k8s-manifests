@@ -3,8 +3,14 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: prometheus
   namespace: prometheus
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare
 spec:
-  ingressClassName: nginx
+  ingressClassName: haproxy-ingress
+  tls:
+    - hosts:
+        - prometheus.babyvelociraptor.com
+      secretName: prometheus-tls
   rules:
     - host: prometheus.babyvelociraptor.com
       http:

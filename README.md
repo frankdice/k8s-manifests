@@ -3,12 +3,13 @@ Kubernetes manifests for home server items
 
 
 ## Bootstrapping
-```
-cd cluster-services/fluxcd/bluey/ 
-# Install the CRD's and such
-kustomize build . | kubectl apply -f -
-cd clusters/bluey/cluster-services/
-# And the Kustomizations that will manage FluxCD and the Bluey folder's apps
+```bash
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+cd cluster-services/fluxcd/
+# Install the Flux CRDs, controllers, GitRepository, and cluster-settings ConfigMap
+kubectl kustomize . | kubectl apply --server-side --force-conflicts -f -
+cd ../../clusters/bluey/cluster-services/
+# Apply the root Kustomizations that manage FluxCD and clusters/bluey
 kubectl apply -f fluxcd.yaml
 ```
 

@@ -9,10 +9,14 @@ spec:
     pathType: Prefix
     path: "/"
     hostname: grafana.babyvelociraptor.com
-    ingressClassName: nginx
+    ingressClassName: haproxy-ingress
+    annotations:
+      cert-manager.io/cluster-issuer: cloudflare
+    tlsEnabled: True
+    tlsSecretName: grafana-tls
   dataStorage:
     accessModes:
-    - ReadWriteOnce
+      - ReadWriteOnce
     size: 10Gi
     volumeName: "grafana"
   config:

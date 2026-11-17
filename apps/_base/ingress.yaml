@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: ${APP_NAME}
 spec:
-  ingressClassName: ${INGRESS_CLASS:=nginx}
+  ingressClassName: ${INGRESS_CLASS:=haproxy-ingress}
   rules:
     - host: ${APP_NAME}.${SECRET_DOMAIN}
       http:
