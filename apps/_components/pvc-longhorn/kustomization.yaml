@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+  - pvc.yaml
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: ignored
+      spec:
+        template:
+          spec:
+            containers:
+              - name: ${APP_NAME}
+                volumeMounts:
+                  - name: ${APP_NAME}-${PVC_NAME:=data}
+                    mountPath: ${PVC_MOUNT_PATH:=/data}
+            volumes:
+              - name: ${APP_NAME}-${PVC_NAME:=data}
+                persistentVolumeClaim:
+                  claimName: ${APP_NAME}-${PVC_NAME:=data}

@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cyberchef
+resources:
+  - ../_base
+components:
+  - ../_components/ingress-tls
+images:
+  - name: app-image
+    newName: mpepping/cyberchef
+    newTag: v10.23.0

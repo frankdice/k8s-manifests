@@ -4,9 +4,17 @@ metadata:
   name: cyberchef
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-manifests
-  path: ./apps/cyberchef/bluey
+  path: ./apps/cyberchef
   prune: true
+  postBuild:
+    substitute:
+      APP_NAME: cyberchef
+      APP_PORT: "8000"
+      INGRESS_CLASS: haproxy-ingress
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
