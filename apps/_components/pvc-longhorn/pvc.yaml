@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn
+  storageClassName: ${PVC_STORAGE_CLASS:=longhorn}
   resources:
     requests:
       storage: ${PVC_SIZE:=10Gi}

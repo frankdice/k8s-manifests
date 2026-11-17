@@ -17,6 +17,7 @@ spec:
       INGRESS_CLASS: haproxy-ingress
       PVC_NAME: data
       PVC_MOUNT_PATH: /app/data
+      PVC_STORAGE_CLASS: local-path
     substituteFrom:
       - kind: ConfigMap
         name: cluster-settings

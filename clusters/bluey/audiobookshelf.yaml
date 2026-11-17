@@ -16,6 +16,7 @@ spec:
       APP_PORT: "80"
       PVC_NAME: config
       PVC_MOUNT_PATH: /config
+      PVC_STORAGE_CLASS: local-path
     substituteFrom:
       - kind: ConfigMap
         name: cluster-settings
